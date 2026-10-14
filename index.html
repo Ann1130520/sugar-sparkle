@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sugar & Sparkle 糖樂萌趣 | 糖果與潮玩專賣店 創業營運計畫書</title>
+  <meta name="description" content="Sugar & Sparkle 糖樂萌趣 商業企劃書與財務模型網站。結合彩虹自選糖果牆與Z世代潮玩盲盒，100萬資本預算，毛利率48.5%，投資回收期12個月。">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandPink: '#FF5376',
+            brandPinkLight: '#FFEBF0',
+            brandBlue: '#3A86FF',
+            brandYellow: '#FFB703',
+            brandMint: '#06D6A0',
+            brandPurple: '#8338EC',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="antialiased min-h-screen">
+
+  <!-- ================= TOP NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-pink-100 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo & Brand Name -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="assets/images/logo.svg" alt="Sugar & Sparkle Logo" class="w-12 h-12 rounded-full shadow-md group-hover:scale-105 transition-transform">
+        <div>
+          <span class="text-xl sm:text-2xl font-black font-display gradient-text-pink tracking-tight block">SUGAR &amp; SPARKLE</span>
+          <span class="text-xs font-bold text-gray-500 tracking-wider block -mt-1">糖樂萌趣 · 甜點潮玩精品店</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-bold text-gray-700">
+        <a href="#concept" class="hover:text-brandPink transition-colors">品牌定位</a>
+        <a href="#budget" class="hover:text-brandPink transition-colors">100萬資金分配</a>
+        <a href="#products" class="hover:text-brandPink transition-colors">產品矩陣</a>
+        <a href="#gallery" class="hover:text-brandPink transition-colors font-extrabold text-brandPink flex items-center gap-1.5 bg-pink-50 px-3 py-1.5 rounded-xl border border-pink-200">
+          <i data-lucide="camera" class="w-4 h-4"></i>商品照片區
+        </a>
+        <a href="#pnl" class="hover:text-brandPink transition-colors">損益分析</a>
+        <a href="#simulator" class="hover:text-brandPink transition-colors text-brandPurple font-extrabold flex items-center gap-1">
+          <i data-lucide="calculator" class="w-4 h-4"></i>即時試算
+        </a>
+        <a href="#forecast" class="hover:text-brandPink transition-colors">三年預估</a>
+        <a href="#roadmap" class="hover:text-brandPink transition-colors">展店里程碑</a>
+      </nav>
+
+      <!-- External Document Action Buttons -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="https://docs.google.com/document/d/13652drQSwojgFWc6NzLKUGcrDVU-M7qpPdoCTwTQ1DA/edit" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-bold rounded-xl text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all">
+          <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i>
+          <span>企劃完整文檔 (Docs)</span>
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/10dj69oe44KHVzqjqfm9YEBhESA_I3HHJ52TpIxMerf4/edit" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-bold rounded-xl text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-all">
+          <i data-lucide="table" class="w-4 h-4 text-emerald-600"></i>
+          <span>財務試算表 (Sheets)</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-gray-700 hover:bg-pink-50">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-pink-100 px-6 py-4 space-y-3 font-bold text-sm text-gray-700 shadow-xl">
+      <a href="#concept" class="block hover:text-brandPink py-1">品牌定位</a>
+      <a href="#budget" class="block hover:text-brandPink py-1">100萬資金分配</a>
+      <a href="#products" class="block hover:text-brandPink py-1">產品矩陣</a>
+      <a href="#gallery" class="block hover:text-brandPink py-1 text-brandPink font-bold">📷 商品照片區</a>
+      <a href="#pnl" class="block hover:text-brandPink py-1">損益分析</a>
+      <a href="#simulator" class="block hover:text-brandPink py-1 text-brandPurple">即時試算器</a>
+      <a href="#forecast" class="block hover:text-brandPink py-1">三年財務預估</a>
+      <a href="#roadmap" class="block hover:text-brandPink py-1">展店里程碑</a>
+      <div class="pt-3 border-t border-gray-100 flex flex-col gap-2">
+        <a href="https://docs.google.com/document/d/13652drQSwojgFWc6NzLKUGcrDVU-M7qpPdoCTwTQ1DA/edit" target="_blank" class="text-xs text-blue-600 flex items-center gap-2 py-1">
+          <i data-lucide="file-text" class="w-4 h-4"></i> 開啟 Google Docs 企劃文檔
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/10dj69oe44KHVzqjqfm9YEBhESA_I3HHJ52TpIxMerf4/edit" target="_blank" class="text-xs text-emerald-600 flex items-center gap-2 py-1">
+          <i data-lucide="table" class="w-4 h-4"></i> 開啟 Google Sheets 財務模型
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+    <!-- Decorative Floating Shapes -->
+    <div class="absolute top-10 left-10 w-72 h-72 bg-pink-200/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Pitch & Headline -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100/80 border border-pink-200 text-brandPink text-xs sm:text-sm font-extrabold shadow-sm">
+            <span class="flex h-2 w-2 rounded-full bg-brandPink animate-ping"></span>
+            <span>✨ 2026 沉浸式休閒零售創業提案 · 資金規劃書</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-gray-900">
+            每一口都是甜美，<br class="hidden sm:block"/>
+            每一盒都是<span class="gradient-text-pink underline decoration-wavy decoration-pink-300">驚喜與療癒</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <strong>Sugar &amp; Sparkle 糖樂萌趣</strong> 融合「彩虹重力自選糖果牆」與「Z世代熱門IP潮玩盲盒」，打造兼具孩童歡樂與大人童心（Kidult）的沉浸式零售地標。
+          </p>
+
+          <!-- Core Value Badges -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+            <span class="pill-badge bg-rose-50 text-rose-700 border border-rose-200">
+              <i data-lucide="badge-dollar-sign" class="w-4 h-4 mr-1 text-rose-500"></i>創業預算 NT$ 100 萬
+            </span>
+            <span class="pill-badge bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <i data-lucide="trending-up" class="w-4 h-4 mr-1 text-emerald-500"></i>綜合毛利率 48.5%
+            </span>
+            <span class="pill-badge bg-blue-50 text-blue-700 border border-blue-200">
+              <i data-lucide="clock" class="w-4 h-4 mr-1 text-blue-500"></i>回本週期 11.5–13 個月
+            </span>
+            <span class="pill-badge bg-purple-50 text-purple-700 border border-purple-200">
+              <i data-lucide="users" class="w-4 h-4 mr-1 text-purple-500"></i>損益平衡 僅需 31人/日
+            </span>
+          </div>
+
+          <!-- Hero CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#simulator" class="btn-candy-primary w-full sm:w-auto px-8 py-4 rounded-2xl font-black text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg">
+              <i data-lucide="calculator" class="w-5 h-5"></i>
+              <span>線上即時財務試算器</span>
+            </a>
+            <a href="#budget" class="btn-candy-secondary w-full sm:w-auto px-8 py-4 rounded-2xl font-black text-center text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg">
+              <i data-lucide="pie-chart" class="w-5 h-5"></i>
+              <span>瀏覽資本與營運模型</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Visual Logo Showcase Card -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="glass-card rounded-3xl p-6 sm:p-8 max-w-md w-full relative group">
+            
+            <div class="absolute -top-4 -right-4 bg-brandYellow text-white font-extrabold text-xs px-3.5 py-1.5 rounded-full shadow-lg transform rotate-6 flex items-center gap-1">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 官方品牌視覺
+            </div>
+
+            <!-- Logo Image -->
+            <div class="overflow-hidden rounded-2xl shadow-inner border border-pink-100 bg-white mb-6">
+              <img src="assets/images/logo.jpg" alt="Sugar & Sparkle Brand Identity" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
+            </div>
+
+            <!-- Card Bottom Stats -->
+            <div class="grid grid-cols-2 gap-4 text-center">
+              <div class="bg-pink-50/80 rounded-2xl p-3 border border-pink-100">
+                <span class="text-xs font-bold text-gray-500 block">預估平均客單價</span>
+                <span class="text-xl font-black text-brandPink">NT$ 220</span>
+              </div>
+              <div class="bg-blue-50/80 rounded-2xl p-3 border border-blue-100">
+                <span class="text-xs font-bold text-gray-500 block">標準月營收</span>
+                <span class="text-xl font-black text-brandBlue">NT$ 400,000</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= SECTION 1: CORE CONCEPT & PILLARS ================= -->
+  <section id="concept" class="py-16 md:py-24 bg-white/60 border-y border-pink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brandPink font-extrabold text-sm uppercase tracking-widest block mb-2">BUSINESS MODEL &amp; PILLARS</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">四大核心體驗引擎，鎖定全客層商機</h2>
+        <p class="text-gray-600 mt-3 text-base">突破傳統雜貨零食或單純玩具店框架，打造大人療癒、孩童雀躍的社群打卡零售地標。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Pillar 1 -->
+        <div class="glass-card rounded-3xl p-7 flex flex-col justify-between border-t-4 border-t-brandPink">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-pink-100 text-brandPink flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="candy" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-900 mb-2">彩虹重力糖果牆</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              進口歐美造型軟糖、德國酸條、懷舊水果硬糖。壓克力透明分裝桶自選秤重，體驗互動感極強，享有高達 <strong>65% 毛利率</strong>。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-extrabold text-brandPink">
+            <span>社群打卡熱點</span>
+            <span>毛利 65%</span>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-card rounded-3xl p-7 flex flex-col justify-between border-t-4 border-t-brandBlue">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-blue-100 text-brandBlue flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="box" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-900 mb-2">Z世代潮玩盲盒</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              引進泡泡瑪特 (Pop Mart)、52TOYS、三麗鷗與日本授權盒玩。鎖定擁有自主消費力的大人童心（Kidult）族群，創造高客單與回購動能。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-extrabold text-brandBlue">
+            <span>高客單高迴轉</span>
+            <span>平均 NT$ 320</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-card rounded-3xl p-7 flex flex-col justify-between border-t-4 border-t-brandYellow">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-100 text-brandYellow flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="gift" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-900 mb-2">派對與校園禮盒</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              承接小學、幼兒園生日派對分享包，以及萬聖節討糖、聖誕倒數月曆。客製化包裝禮盒提升附加價值，提供大宗團體訂單支撐。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-extrabold text-brandYellow">
+            <span>B2B與節慶大單</span>
+            <span>毛利 60%</span>
+          </div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="glass-card rounded-3xl p-7 flex flex-col justify-between border-t-4 border-t-brandPurple">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-purple-100 text-brandPurple flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="sparkles" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-black text-gray-900 mb-2">盲盒社群與扭蛋輪盤</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              舉辦雙週「拆盒交換夜」，滿額滿NT$ 300即可抽幸運輪盤。結合 Line 官方帳號數位集點卡，將一次性過路客轉化為忠誠VIP。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-extrabold text-brandPurple">
+            <span>高黏著度社群</span>
+            <span>複購率 40%+</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SECTION 2: 100萬資金分配 (CAPITAL BUDGET) ================= -->
+  <section id="budget" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brandPink font-extrabold text-sm uppercase tracking-widest block mb-2">CAPITAL ALLOCATION</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">100 萬創業資金配置結構</h2>
+        <p class="text-gray-600 mt-3 text-base">紀律化資本預算，兼顧門市門面吸睛度、庫存豐富度，並保留超過2個月的營運週轉護城河。</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Doughnut Chart Column -->
+        <div class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 flex flex-col items-center">
+          <h3 class="text-lg font-black text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="pie-chart" class="w-5 h-5 text-brandPink"></i>
+            <span>資金佔比分佈圓餅圖</span>
+          </h3>
+          <div class="relative w-full h-[320px] sm:h-[360px]">
+            <canvas id="budgetDoughnutChart"></canvas>
+            <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pb-12">
+              <span class="text-xs font-bold text-gray-500">總資金預算</span>
+              <span class="text-2xl font-black text-gray-900">NT$ 1M</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Budget Table Column -->
+        <div class="lg:col-span-7">
+          <div class="glass-card rounded-3xl p-6 sm:p-8 overflow-hidden">
+            <h3 class="text-lg font-black text-gray-900 mb-6 flex items-center justify-between">
+              <span class="flex items-center gap-2">
+                <i data-lucide="table" class="w-5 h-5 text-brandBlue"></i>
+                <span>明細預算配置表</span>
+              </span>
+              <span class="text-xs font-bold bg-pink-100 text-brandPink px-3 py-1 rounded-full">100% 完整配置</span>
+            </h3>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm">
+                <thead>
+                  <tr class="border-b border-gray-200 text-gray-500 text-xs font-extrabold uppercase">
+                    <th class="py-3 px-2">投資項目</th>
+                    <th class="py-3 px-2">金額 (NT$)</th>
+                    <th class="py-3 px-2">佔比</th>
+                    <th class="py-3 px-2">策略目的與說明</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 font-medium">
+                  
+                  <tr>
+                    <td class="py-3 px-2 font-bold text-gray-900">店面租賃押金</td>
+                    <td class="py-3 px-2 font-black text-brandBlue">NT$ 70,000</td>
+                    <td class="py-3 px-2">
+                      <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">7.0%</span>
+                    </td>
+                    <td class="py-3 px-2 text-xs text-gray-500">2個月押金 (鎖定捷運/學校商圈 15-18坪金店面)</td>
+                  </tr>
+
+                  <tr>
+                    <td class="py-3 px-2 font-bold text-gray-900">裝潢工程與陳列櫃</td>
+                    <td class="py-3 px-2 font-black text-brandPink">NT$ 320,000</td>
+                    <td class="py-3 px-2">
+                      <span class="text-xs font-bold bg-pink-100 text-pink-800 px-2 py-0.5 rounded">32.0%</span>
+                    </td>
+                    <td class="py-3 px-2 text-xs text-gray-500">壓克力糖果牆、軌道投射燈、發光招牌、中島展示櫃</td>
+                  </tr>
+
+                  <tr>
+                    <td class="py-3 px-2 font-bold text-gray-900">POS與收銀系統</td>
+                    <td class="py-3 px-2 font-black text-amber-600">NT$ 35,000</td>
+                    <td class="py-3 px-2">
+                      <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">3.5%</span>
+                    </td>
+                    <td class="py-3 px-2 text-xs text-gray-500">iPad POS、熱感出單機、藍牙條碼掃描槍、安全監控</td>
+                  </tr>
+
+                  <tr>
+                    <td class="py-3 px-2 font-bold text-gray-900">首批進貨庫存</td>
+                    <td class="py-3 px-2 font-black text-brandPurple">NT$ 300,000</td>
+                    <td class="py-3 px-2">
+                      <span class="text-xs font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded">30.0%</span>
+                    </td>
+                    <td class="py-3 px-2 text-xs text-gray-500">自選糖 (6萬)、進口點心 (6萬)、盲盒公仔 (12萬)、益智 (6萬)</td>
+                  </tr>
+
+                  <tr>
+                    <td class="py-3 px-2 font-bold text-gray-900">證照、商標與行銷</td>
+                    <td class="py-3 px-2 font-black text-rose-600">NT$ 45,000</td>
+                    <td class="py-3 px-2">
+                      <span class="text-xs font-bold bg-rose-100 text-rose-800 px-2 py-0.5 rounded">4.5%</span>
+                    </td>
+                    <td class="py-3 px-2 text-xs text-gray-500">商號登記、食品業者登錄、商標註冊、開幕Meta廣告宣傳</td>
+                  </tr>
+
+                  <tr class="bg-emerald-50/50">
+                    <td class="py-3 px-2 font-bold text-gray-900">營運週轉準備金</td>
+                    <td class="py-3 px-2 font-black text-emerald-600">NT$ 230,000</td>
+                    <td class="py-3 px-2">
+                      <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">23.0%</span>
+                    </td>
+                    <td class="py-3 px-2 text-xs text-gray-500 font-bold">涵蓋 3-4 個月固定支出之現金護城河</td>
+                  </tr>
+
+                  <tr class="bg-pink-50/70 font-black text-base border-t-2 border-brandPink">
+                    <td class="py-3 px-2 text-gray-900">合計總創業資本</td>
+                    <td class="py-3 px-2 text-brandPink">NT$ 1,000,000</td>
+                    <td class="py-3 px-2">100.0%</td>
+                    <td class="py-3 px-2 text-xs text-gray-600">全額到位，無需額外負債借貸</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SECTION 3: PRODUCT MIX & UNIT ECONOMICS ================= -->
+  <section id="products" class="py-16 md:py-24 bg-white/60 border-y border-pink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brandPink font-extrabold text-sm uppercase tracking-widest block mb-2">PRODUCT MATRIX</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">產品組合與單位經濟學</h2>
+        <p class="text-gray-600 mt-3 text-base">以「高毛利自選糖果」創造利潤護城河，搭配「高迴轉潮玩盲盒」拉動客單價與人流，達到 48.5% 綜合毛利率。</p>
+      </div>
+
+      <!-- 5 Product Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+        
+        <!-- Category 1 -->
+        <div class="glass-card rounded-2xl p-5 border-t-4 border-emerald-400">
+          <span class="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md">毛利率最高 65%</span>
+          <h4 class="text-base font-black text-gray-900 mt-3 mb-1">秤重自選軟糖</h4>
+          <p class="text-xs text-gray-500 mb-4">歐洲進口軟糖、酸味夾心</p>
+          <div class="space-y-1.5 text-xs">
+            <div class="flex justify-between"><span class="text-gray-400">平均售價:</span><span class="font-bold">NT$ 120 / 100g</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">進貨成本:</span><span class="font-bold">NT$ 42 (35%)</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">營收佔比:</span><span class="font-bold text-emerald-600">25.0%</span></div>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="glass-card rounded-2xl p-5 border-t-4 border-blue-400">
+          <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">穩定副主力 45%</span>
+          <h4 class="text-base font-black text-gray-900 mt-3 mb-1">進口特色零食</h4>
+          <p class="text-xs text-gray-500 mb-4">日本盒裝點心、造型巧克力</p>
+          <div class="space-y-1.5 text-xs">
+            <div class="flex justify-between"><span class="text-gray-400">平均售價:</span><span class="font-bold">NT$ 180</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">進貨成本:</span><span class="font-bold">NT$ 99 (55%)</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">營收佔比:</span><span class="font-bold text-blue-600">20.0%</span></div>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="glass-card rounded-2xl p-5 border-t-4 border-purple-400">
+          <span class="text-xs font-extrabold text-purple-600 bg-purple-50 px-2 py-1 rounded-md">營收火車頭 30%</span>
+          <h4 class="text-base font-black text-gray-900 mt-3 mb-1">潮玩IP盲盒</h4>
+          <p class="text-xs text-gray-500 mb-4">泡泡瑪特、三麗鷗正版授權</p>
+          <div class="space-y-1.5 text-xs">
+            <div class="flex justify-between"><span class="text-gray-400">平均售價:</span><span class="font-bold">NT$ 320</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">進貨成本:</span><span class="font-bold">NT$ 198 (62%)</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">毛利率:</span><span class="font-bold text-purple-600">38.0%</span></div>
+          </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="glass-card rounded-2xl p-5 border-t-4 border-amber-400">
+          <span class="text-xs font-extrabold text-amber-600 bg-amber-50 px-2 py-1 rounded-md">優質毛利 50%</span>
+          <h4 class="text-base font-black text-gray-900 mt-3 mb-1">益智文創玩具</h4>
+          <p class="text-xs text-gray-500 mb-4">木質拼圖、STEM組裝DIY</p>
+          <div class="space-y-1.5 text-xs">
+            <div class="flex justify-between"><span class="text-gray-400">平均售價:</span><span class="font-bold">NT$ 250</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">進貨成本:</span><span class="font-bold">NT$ 125 (50%)</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">營收佔比:</span><span class="font-bold text-amber-600">15.0%</span></div>
+          </div>
+        </div>
+
+        <!-- Category 5 -->
+        <div class="glass-card rounded-2xl p-5 border-t-4 border-rose-400">
+          <span class="text-xs font-extrabold text-rose-600 bg-rose-50 px-2 py-1 rounded-md">高客單高毛利 60%</span>
+          <h4 class="text-base font-black text-gray-900 mt-3 mb-1">客製派對禮盒</h4>
+          <p class="text-xs text-gray-500 mb-4">生日慶生包、節慶送禮套組</p>
+          <div class="space-y-1.5 text-xs">
+            <div class="flex justify-between"><span class="text-gray-400">平均售價:</span><span class="font-bold">NT$ 450</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">進貨成本:</span><span class="font-bold">NT$ 180 (40%)</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">毛利率:</span><span class="font-bold text-rose-600">60.0%</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Chart Comparison -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8">
+        <h3 class="text-lg font-black text-gray-900 mb-4 flex items-center gap-2">
+          <i data-lucide="bar-chart-2" class="w-5 h-5 text-brandPurple"></i>
+          <span>品類營收佔比 vs 毛利率交叉分析</span>
+        </h3>
+        <div class="h-72 sm:h-80 w-full">
+          <canvas id="productMarginChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- ================= SECTION: PRODUCT & STORE GALLERY (商品照片與實景展示區) ================= -->
+  <section id="gallery" class="py-16 md:py-24 bg-gradient-to-b from-white via-pink-50/40 to-white border-b border-pink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 text-brandPink text-xs font-extrabold mb-2">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 實景與商品圖鑑 · PRODUCT GALLERY
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">門市概念實景與人氣商品特寫</h2>
+        <p class="text-gray-600 mt-3 text-base">沉浸式視覺饗宴 — 從色彩繽紛的彩虹重力糖果牆、Z世代搶手潮玩盲盒，到客製派對禮盒。</p>
+      </div>
+
+      <!-- Flagship Store Interior Hero Banner -->
+      <div class="glass-card rounded-3xl overflow-hidden mb-12 shadow-xl border-2 border-pink-200/80 group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+          <div class="lg:col-span-7 overflow-hidden relative max-h-[440px]">
+            <img src="assets/images/store_interior.jpg" alt="Sugar & Sparkle Boutique Interior Design" 
+                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+              <i data-lucide="eye" class="w-3.5 h-3.5 text-pink-400"></i>
+              <span>3D 概念旗艦門市渲染實景</span>
+            </div>
+          </div>
+          <div class="lg:col-span-5 p-8 sm:p-10 space-y-4">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-extrabold text-xs">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> 裝潢預算 NT$ 320,000 完整落地
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-black text-gray-900">
+              彩虹重力自選糖果牆 × 潮流盲盒中島
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              明亮活潑的馬卡龍色調門面，搭配整面落地透明壓克力糖果分裝桶（24桶重力分裝裝置），與正版授權公仔展示發光櫃。顧客一踏入店內即沉浸在甜蜜與探索驚喜的雙重療癒體驗中。
+            </p>
+            <div class="grid grid-cols-2 gap-3 pt-2 text-xs font-bold">
+              <div class="bg-pink-50 p-3 rounded-xl border border-pink-100">
+                <span class="text-gray-400 block mb-0.5">自選糖果毛利率</span>
+                <span class="text-lg font-black text-brandPink">高達 65%</span>
+              </div>
+              <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
+                <span class="text-gray-400 block mb-0.5">盲盒平均客單價</span>
+                <span class="text-lg font-black text-brandBlue">NT$ 320</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        <button class="gallery-filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-brandPink text-white shadow-md shadow-pink-200" data-filter="all">
+          全部商品 (12)
+        </button>
+        <button class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:text-brandPink" data-filter="candy">
+          🍭 秤重自選軟糖 (3)
+        </button>
+        <button class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:text-brandPink" data-filter="blindbox">
+          🧸 潮流盲盒公仔 (3)
+        </button>
+        <button class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:text-brandPink" data-filter="snack">
+          🍫 進口精緻點心 (2)
+        </button>
+        <button class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:text-brandPink" data-filter="toy">
+          🧩 益智文創玩具 (2)
+        </button>
+        <button class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all bg-white text-gray-700 border border-gray-200 hover:border-pink-300 hover:text-brandPink" data-filter="party">
+          🎁 客製派對禮盒 (2)
+        </button>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+        <!-- Card 1: Rainbow Candies -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="candy">
+          <div class="relative overflow-hidden aspect-[4/3] bg-pink-50">
+            <img src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=800&q=80" 
+                 alt="Rainbow Gummy Candy Wall" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 65%</span>
+            <span class="absolute top-3 right-3 bg-pink-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">自選秤重</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">歐美進口系列</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-brandPink transition-colors">彩虹重力自選軟糖條</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">德國原裝進口酸味彩虹長條、小熊軟糖、水果爆漿夾心軟糖，香甜微酸。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-brandPink">NT$ 120 <span class="text-xs font-normal text-gray-500">/ 100g</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-pink-50 hover:bg-pink-100 text-brandPink font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="彩虹重力自選軟糖條" data-category="秤重自選軟糖" data-price="NT$ 120 / 100g" data-cost="NT$ 42 (35%)" data-margin="65.0%" data-share="25.0%"
+                      data-desc="透明重力分裝桶陳列，包含德國彩虹酸酸條、小熊軟糖、可樂軟糖與雙層水果夾心。客製化秤重模式體驗感極佳，為店內毛利率最高之現金流核心。"
+                      data-img="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Lollipops -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="candy">
+          <div class="relative overflow-hidden aspect-[4/3] bg-pink-50">
+            <img src="https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&w=800&q=80" 
+                 alt="Artisan Swirl Lollipops" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 60%</span>
+            <span class="absolute top-3 right-3 bg-amber-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">拍照道具</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">手工藝級硬糖</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-brandPink transition-colors">巨型復古旋風棒棒糖</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">鮮豔幾何旋風紋理與經典波普色彩，是小學生放學、情侶拍照最搶手的經典之作。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-brandPink">NT$ 65 - 120 <span class="text-xs font-normal text-gray-500">/ 支</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-pink-50 hover:bg-pink-100 text-brandPink font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="巨型復古旋風棒棒糖" data-category="手工藝術硬糖" data-price="NT$ 65 - 120 / 支" data-cost="NT$ 26 - 48 (40%)" data-margin="60.0%" data-share="8.0%"
+                      data-desc="純手工拉糖工藝，保留傳統經典幾何同心圓螺旋紋理，色彩繽紛吸睛。具備極高拍照上鏡度，常作為IG拍照打卡道具及幼兒園慶生小禮物。"
+                      data-img="https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Marshmallows -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="candy">
+          <div class="relative overflow-hidden aspect-[4/3] bg-pink-50">
+            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80" 
+                 alt="Pastel Marshmallow Clouds" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 58%</span>
+            <span class="absolute top-3 right-3 bg-rose-400 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">少女心爆棚</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">雲朵甜心系列</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-brandPink transition-colors">馬卡龍色棉花糖雲朵</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">蓬鬆綿軟、低糖配方，色彩粉嫩如夢似幻，自帶高顏值伴手禮氣質。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-brandPink">NT$ 85 - 160 <span class="text-xs font-normal text-gray-500">/ 袋</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-pink-50 hover:bg-pink-100 text-brandPink font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="馬卡龍色棉花糖雲朵" data-category="甜心棉花糖" data-price="NT$ 85 - 160 / 袋" data-cost="NT$ 35 - 67 (42%)" data-margin="58.0%" data-share="7.0%"
+                      data-desc="引進粉嫩馬卡龍色系造型棉花糖，口感細緻綿軟、甜度適中。適合與自選糖果袋混合搭配，亦是製作熱可可或派對甜點桌的亮點素材。"
+                      data-img="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Blind Box -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="blindbox">
+          <div class="relative overflow-hidden aspect-[4/3] bg-purple-50">
+            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80" 
+                 alt="Designer Vinyl Blind Box Figures" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-purple-600 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">營收佔比 30%</span>
+            <span class="absolute top-3 right-3 bg-blue-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">正版授權</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">潮玩公仔旗艦</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-brandPurple transition-colors">Z世代正版設計師盲盒</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">泡泡瑪特、三麗鷗與熱門動漫IP授權盒玩，隱藏款機率帶動收藏熱潮。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-brandPurple">NT$ 320 - 380 <span class="text-xs font-normal text-gray-500">/ 盒</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-brandPurple font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="Z世代正版設計師盲盒" data-category="潮流盲盒公仔" data-price="NT$ 320 - 380 / 盒" data-cost="NT$ 198 (62%)" data-margin="38.0%" data-share="30.0%"
+                      data-desc="店內營收與客單價核心驅動力！精選國內外一線潮玩IP（如三麗鷗家族、泡泡瑪特授權系列、熱門動漫），每套含12款常規+1款限量隱藏版，帶動連續開箱與社群交換。"
+                      data-img="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Plush Collectibles -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="blindbox">
+          <div class="relative overflow-hidden aspect-[4/3] bg-purple-50">
+            <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=800&q=80" 
+                 alt="Kawaii Plushies & Collectibles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 45%</span>
+            <span class="absolute top-3 right-3 bg-pink-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">療癒手感</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">治癒系周邊</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-brandPurple transition-colors">萌系毛絨玩偶與吊飾</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">細膩刺繡短絨手感，附精緻登山扣，是學生書包與上班族包包的療癒配飾。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-brandPurple">NT$ 280 - 450 <span class="text-xs font-normal text-gray-500">/ 隻</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-brandPurple font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="萌系毛絨玩偶與吊飾" data-category="潮流毛絨周邊" data-price="NT$ 280 - 450 / 隻" data-cost="NT$ 154 (55%)" data-margin="45.0%" data-share="8.0%"
+                      data-desc="精選日系超柔短絨玩偶，結合軟糯慢回彈內裡。除了經典小熊、兔兔造型，更搭配盲袋盲盒包裝形式販售，兼具拆袋驚喜與高實用性隨身掛飾。"
+                      data-img="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Gashapon -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="blindbox">
+          <div class="relative overflow-hidden aspect-[4/3] bg-purple-50">
+            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" 
+                 alt="Japanese Gashapon Machine Capsules" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 42%</span>
+            <span class="absolute top-3 right-3 bg-amber-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">被動金流</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">轉蛋機專區</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-brandPurple transition-colors">日本正版扭蛋膠囊盲抽</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">店門口排列精選轉蛋機台，微縮模型、趣味公仔，無需人力看顧自主營收。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-brandPurple">NT$ 60 - 150 <span class="text-xs font-normal text-gray-500">/ 抽</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-brandPurple font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="日本正版扭蛋膠囊盲抽" data-category="轉蛋玩具機台" data-price="NT$ 60 - 150 / 抽" data-cost="NT$ 35 - 87 (58%)" data-margin="42.0%" data-share="7.0%"
+                      data-desc="設立於店門騎樓與入口處的8台雙層轉蛋機，定期引進BANDAI、TAKARA TOMY等日本正版熱門蛋品。全自動投幣/LinePay掃碼出蛋，提供無人被動收入。"
+                      data-img="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7: Chocolates -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="snack">
+          <div class="relative overflow-hidden aspect-[4/3] bg-blue-50">
+            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=800&q=80" 
+                 alt="Artisan Belgian Chocolate Bars" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 50%</span>
+            <span class="absolute top-3 right-3 bg-blue-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">送禮精品</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">精品可可系列</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-brandBlue transition-colors">手工堅果果乾黑巧克力磚</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">比利時頂級可可原豆，手工鋪撒烘焙杏仁與草莓果乾，風味層次高雅。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-brandBlue">NT$ 180 - 260 <span class="text-xs font-normal text-gray-500">/ 片</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-brandBlue font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="手工堅果果乾黑巧克力磚" data-category="精品進口巧克力" data-price="NT$ 180 - 260 / 片" data-cost="NT$ 90 - 130 (50%)" data-margin="50.0%" data-share="10.0%"
+                      data-desc="針對重視品味的上班族、高中大學生與情人節客群，選用72%頂級調溫黑巧克力，搭配無防腐劑低溫凍乾果乾。具備高單價、包裝典雅特性。"
+                      data-img="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8: Japanese Treats -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="snack">
+          <div class="relative overflow-hidden aspect-[4/3] bg-blue-50">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" 
+                 alt="Japanese Matcha & Specialty Biscuits" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 45%</span>
+            <span class="absolute top-3 right-3 bg-emerald-600 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">日系伴手</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">亞洲特色點心</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-brandBlue transition-colors">日韓季節限定夾心脆餅</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">宇治抹茶、草莓季限量版零嘴，包裝精美，免出國就能買到當地限定名產。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-brandBlue">NT$ 150 - 220 <span class="text-xs font-normal text-gray-500">/ 盒</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-brandBlue font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="日韓季節限定夾心脆餅" data-category="進口特色零食" data-price="NT$ 150 - 220 / 盒" data-cost="NT$ 82 - 121 (55%)" data-margin="45.0%" data-share="10.0%"
+                      data-desc="直接自合法進口貿易商批量採購當季最搶手的日韓超商熱門限定品，如Pocky特殊聯名款、日本白巧克力脆餅，提供消費者隨時隨地嘗鮮樂趣。"
+                      data-img="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 9: 3D Wooden Puzzles -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="toy">
+          <div class="relative overflow-hidden aspect-[4/3] bg-amber-50">
+            <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80" 
+                 alt="3D Wooden Mechanical Puzzles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 50%</span>
+            <span class="absolute top-3 right-3 bg-amber-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">STEM 益智</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">益智教育精選</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-amber-600 transition-colors">3D 立體木質機械拼圖</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">環保實木卡榫設計，無需膠水拼裝復古時鐘、音樂盒與旋轉木馬，寓教於樂。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-amber-600">NT$ 250 - 390 <span class="text-xs font-normal text-gray-500">/ 組</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-700 font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="3D 立體木質機械拼圖" data-category="益智文創玩具" data-price="NT$ 250 - 390 / 組" data-cost="NT$ 125 - 195 (50%)" data-margin="50.0%" data-share="8.0%"
+                      data-desc="天然椴木雷射精密切割，組裝難度涵蓋國小初階到成人進階款。深受注重智力發展的家長青睞，是客單價穩定、退貨率極低的教育型品類。"
+                      data-img="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 10: Fidget Toys -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="toy">
+          <div class="relative overflow-hidden aspect-[4/3] bg-amber-50">
+            <img src="https://images.unsplash.com/photo-1591991731833-b4807cf7ef94?auto=format&fit=crop&w=800&q=80" 
+                 alt="Fidget Puzzles & Speed Cubes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 52%</span>
+            <span class="absolute top-3 right-3 bg-pink-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">解壓熱賣</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">隨身舒壓玩具</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-amber-600 transition-colors">減壓磁力魔方與競技桌遊</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">磁吸順滑手感、幾何百變形狀，是學生下課互動、考前放鬆的破冰好物。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-amber-600">NT$ 190 - 350 <span class="text-xs font-normal text-gray-500">/ 組</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-700 font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="減壓磁力魔方與競技桌遊" data-category="文創減壓玩具" data-price="NT$ 190 - 350 / 組" data-cost="NT$ 91 - 168 (48%)" data-margin="52.0%" data-share="7.0%"
+                      data-desc="結合靜音磁力卡扣與流暢軸承，設計精巧便攜。適合作為學生書包小配件，亦能於放學後引發同儕間的解題競技熱潮。"
+                      data-img="https://images.unsplash.com/photo-1591991731833-b4807cf7ef94?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 11: Classroom Party Bags -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="party">
+          <div class="relative overflow-hidden aspect-[4/3] bg-rose-50">
+            <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80" 
+                 alt="Classroom Birthday Goody Bags" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 60%</span>
+            <span class="absolute top-3 right-3 bg-rose-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">校園團訂爆款</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">幼兒園/小學專案</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-rose-600 transition-colors">幼兒園慶生分享包 (10包起)</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">客製姓名小吊牌、無防腐劑天然果膠軟糖與迷你益智擦子，家長省心首選。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-rose-600">NT$ 65 - 95 <span class="text-xs font-normal text-gray-500">/ 包</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="幼兒園慶生分享包 (10包起)" data-category="校園客製禮包" data-price="NT$ 65 - 95 / 包" data-cost="NT$ 26 - 38 (40%)" data-margin="60.0%" data-share="5.0%"
+                      data-desc="專門針對學校同學慶生設計，內含小熊軟糖、造型餅乾與迷你拼圖，提供客製印製小朋友英文名祝福吊卡。單次採購多為20-35包，是穩定的團體大量訂單來源。"
+                      data-img="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 12: Deluxe Gift Box -->
+        <div class="gallery-card glass-card rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="party">
+          <div class="relative overflow-hidden aspect-[4/3] bg-rose-50">
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" 
+                 alt="Deluxe Celebration Gift Box" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-emerald-500 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">毛利 65%</span>
+            <span class="absolute top-3 right-3 bg-purple-600 text-white font-extrabold text-[11px] px-2.5 py-1 rounded-full shadow">節慶送禮</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-gray-400 block mb-1">節慶典藏精品</span>
+              <h4 class="text-base font-black text-gray-900 group-hover:text-rose-600 transition-colors">奢華燙金客製節慶禮盒</h4>
+              <p class="text-xs text-gray-500 mt-1 line-clamp-2">粉嫩燙金厚卡紙盒搭配高磅緞帶，集合限定盲盒、進口巧克力與綜合糖果。</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-gray-400 block">建議售價</span>
+                <span class="text-base font-black text-rose-600">NT$ 450 - 680 <span class="text-xs font-normal text-gray-500">/ 盒</span></span>
+              </div>
+              <button class="open-product-modal-btn px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-extrabold text-xs transition-colors flex items-center gap-1"
+                      data-title="奢華燙金客製節慶禮盒" data-category="節慶客製禮盒" data-price="NT$ 450 - 680 / 盒" data-cost="NT$ 157 - 238 (35%)" data-margin="65.0%" data-share="5.0%"
+                      data-desc="萬聖節驚喜包、聖誕節倒數禮盒、兒童節企業贈禮的核心主打！禮盒內含精選盲盒公仔1隻 + 進口糖果小罐裝2入 + 品牌手寫卡片，包裝極具高級感。"
+                      data-img="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80">
+                查看詳情 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT DETAIL MODAL ================= -->
+  <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl animate-in fade-in zoom-in duration-200">
+      
+      <!-- Close Button -->
+      <button id="closeProductModalBtn" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+        <!-- Modal Image -->
+        <div class="sm:col-span-5 rounded-2xl overflow-hidden shadow-inner bg-pink-50 aspect-square">
+          <img id="modalImg" src="" alt="Product Detail" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Modal Info -->
+        <div class="sm:col-span-7 space-y-3">
+          <span id="modalCategory" class="text-xs font-extrabold text-brandPink bg-pink-50 px-2.5 py-1 rounded-md">Category</span>
+          <h3 id="modalTitle" class="text-xl sm:text-2xl font-black text-gray-900 leading-snug">Product Title</h3>
+          <p id="modalDesc" class="text-xs sm:text-sm text-gray-600 leading-relaxed">Product description text...</p>
+          
+          <div class="bg-gray-50 p-3.5 rounded-2xl space-y-1.5 text-xs font-semibold">
+            <div class="flex justify-between"><span class="text-gray-400">建議售價:</span><span id="modalPrice" class="font-black text-brandPink text-sm">NT$ --</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">進貨單位成本:</span><span id="modalCost" class="font-bold text-gray-700">NT$ --</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">產品毛利率:</span><span id="modalMargin" class="font-black text-emerald-600">--%</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">營收貢獻度:</span><span id="modalShare" class="font-bold text-gray-700">--%</span></div>
+          </div>
+
+          <div class="pt-2 flex gap-3">
+            <a href="https://docs.google.com/spreadsheets/d/10dj69oe44KHVzqjqfm9YEBhESA_I3HHJ52TpIxMerf4/edit" target="_blank"
+               class="flex-1 py-2.5 px-4 rounded-xl bg-brandPink text-white font-extrabold text-xs text-center hover:bg-pink-600 transition-colors flex items-center justify-center gap-1.5">
+              <i data-lucide="table" class="w-3.5 h-3.5"></i> 查看完整財務矩陣
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ================= SECTION 4: OPEX & BREAK-EVEN ANALYSIS ================= -->
+  <section id="pnl" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brandPink font-extrabold text-sm uppercase tracking-widest block mb-2">FINANCIAL PERFORMANCE</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">每月營業損益與損益平衡點</h2>
+        <p class="text-gray-600 mt-3 text-base">固定營運費用精簡可控（NT$ 100,000/月），每日僅需 31 位顧客即可越過損益平衡門檻。</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1: Monthly OPEX -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-black text-gray-900">每月固定支出 (OPEX)</h3>
+            <span class="text-xs font-bold bg-amber-100 text-amber-800 px-3 py-1 rounded-full">NT$ 100,000 /月</span>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600">門市店租 (15-18坪)</span>
+              <span class="font-bold text-gray-900">NT$ 35,000</span>
+            </div>
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600">正兼職員工薪資 (120hr)</span>
+              <span class="font-bold text-gray-900">NT$ 38,000</span>
+            </div>
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600">水電冷氣與光纖網路</span>
+              <span class="font-bold text-gray-900">NT$ 12,000</span>
+            </div>
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600">社群行銷與在地傳單</span>
+              <span class="font-bold text-gray-900">NT$ 8,000</span>
+            </div>
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600">食品袋、提袋與耗材</span>
+              <span class="font-bold text-gray-900">NT$ 4,000</span>
+            </div>
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600">POS與行動支付手續費</span>
+              <span class="font-bold text-gray-900">NT$ 3,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Normalized Monthly P&L -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border-2 border-pink-200">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-black text-gray-900">標準月份損益表 (P&amp;L)</h3>
+            <span class="text-xs font-bold bg-pink-100 text-brandPink px-3 py-1 rounded-full">營收 NT$ 400k</span>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600 font-bold">總營業收入</span>
+              <span class="font-black text-gray-900">NT$ 400,000</span>
+            </div>
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600">進貨銷售成本 (51.5%)</span>
+              <span class="font-bold text-red-500">- NT$ 206,000</span>
+            </div>
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600 font-bold">營業毛利 (48.5%)</span>
+              <span class="font-black text-emerald-600">+ NT$ 194,000</span>
+            </div>
+            <div class="flex justify-between pb-2 border-b border-gray-100">
+              <span class="text-gray-600">每月固定營運費用 (OPEX)</span>
+              <span class="font-bold text-red-500">- NT$ 100,000</span>
+            </div>
+            <div class="pt-2 flex justify-between items-center bg-emerald-50/70 p-3 rounded-2xl border border-emerald-100">
+              <div>
+                <span class="text-xs text-emerald-800 font-bold block">每月稅前營業淨利</span>
+                <span class="text-xs text-gray-500">淨利率 23.5%</span>
+              </div>
+              <span class="text-2xl font-black text-emerald-700">NT$ 94,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Break-Even Calculation -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-white to-pink-50/30">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-black text-gray-900">損益平衡分析 (BEP)</h3>
+            <span class="text-xs font-bold bg-purple-100 text-brandPurple px-3 py-1 rounded-full">低門檻</span>
+          </div>
+          
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-purple-100 mb-4">
+            <span class="text-xs text-gray-500 block mb-1">損益平衡點公式</span>
+            <div class="font-mono text-xs text-purple-700 font-bold">
+              固定成本 (10萬) ÷ 毛利率 (48.5%)
+            </div>
+            <div class="text-2xl font-black text-purple-800 mt-2">
+              NT$ 206,186 <span class="text-xs font-normal text-gray-500">/ 月</span>
+            </div>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between py-1 border-b border-gray-100">
+              <span class="text-gray-500">每日需達成營業額:</span>
+              <span class="font-black text-gray-900">NT$ 6,873 /日</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-gray-100">
+              <span class="text-gray-500">每日需成交顧客數:</span>
+              <span class="font-black text-brandPink text-sm">僅需 31 位顧客 /日</span>
+            </div>
+            <div class="flex justify-between py-1">
+              <span class="text-gray-500">預估本金回收期:</span>
+              <span class="font-black text-emerald-600 text-sm">11.5 – 13 個月</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SECTION 5: INTERACTIVE REAL-TIME SIMULATOR ================= -->
+  <section id="simulator" class="py-16 md:py-24 bg-gradient-to-br from-pink-50 via-white to-blue-50 border-y border-pink-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 text-brandPurple text-xs font-extrabold mb-2">
+          <i data-lucide="sliders" class="w-3.5 h-3.5"></i> 互動模擬工具
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">即時營收與投資回報 (ROI) 試算器</h2>
+        <p class="text-gray-600 mt-3 text-base">可自由拖曳調整「客單價」與「每日來客數」，系統將即時計算月營業額、淨利與回本天數。</p>
+      </div>
+
+      <div class="glass-card rounded-3xl p-8 sm:p-10 shadow-2xl border-2 border-pink-200/80">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          
+          <!-- Slider 1: ATV -->
+          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <div class="flex justify-between items-center mb-3">
+              <label for="simAtv" class="text-sm font-extrabold text-gray-800">平均客單價 (ATV)</label>
+              <span id="simAtvVal" class="text-lg font-black text-brandPink">NT$ 220</span>
+            </div>
+            <input type="range" id="simAtv" min="150" max="350" step="10" value="220" class="w-full h-2.5 bg-pink-100 rounded-lg cursor-pointer">
+            <div class="flex justify-between text-xs text-gray-400 mt-2 font-bold">
+              <span>NT$ 150 (以散裝糖果為主)</span>
+              <span>NT$ 350 (以盲盒公仔為主)</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Daily Customers -->
+          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <div class="flex justify-between items-center mb-3">
+              <label for="simCust" class="text-sm font-extrabold text-gray-800">每日交易客數 (Daily Footfall)</label>
+              <span id="simCustVal" class="text-lg font-black text-brandBlue">60 人/日</span>
+            </div>
+            <input type="range" id="simCust" min="20" max="120" step="5" value="60" class="w-full h-2.5 bg-blue-100 rounded-lg cursor-pointer">
+            <div class="flex justify-between text-xs text-gray-400 mt-2 font-bold">
+              <span>20 人 (淡季下限)</span>
+              <span>120 人 (假日高峰)</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Live Results Box -->
+        <div class="bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-indigo-800/60">
+            <div>
+              <span class="text-xs uppercase tracking-wider text-indigo-300 font-bold block">即時試算營運成果</span>
+              <span class="text-2xl sm:text-3xl font-black text-white">模型試算總結</span>
+            </div>
+            <div id="simBepStatus">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 text-center">
+            
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <span class="text-xs text-indigo-200 block mb-1">預估月營業額</span>
+              <span id="simResRevenue" class="text-xl sm:text-2xl font-black text-white">NT$ 396,000</span>
+            </div>
+
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <span class="text-xs text-indigo-200 block mb-1">預估月毛利 (48.5%)</span>
+              <span id="simResGross" class="text-xl sm:text-2xl font-black text-emerald-400">NT$ 192,060</span>
+            </div>
+
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <span class="text-xs text-indigo-200 block mb-1">預估每月淨利潤</span>
+              <span id="simResNet" class="text-xl sm:text-2xl font-black text-emerald-400">+ NT$ 92,060</span>
+              <span id="simResMargin" class="text-xs text-gray-300 block mt-0.5">23.2%</span>
+            </div>
+
+            <div class="p-3 bg-white/5 rounded-2xl">
+              <span class="text-xs text-indigo-200 block mb-1">預估本金回本期</span>
+              <span id="simResPayback" class="text-xl sm:text-2xl font-black text-amber-300">10.9 個月</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SECTION 6: 3-YEAR FINANCIAL FORECAST ================= -->
+  <section id="forecast" class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brandPink font-extrabold text-sm uppercase tracking-widest block mb-2">GROWTH PROJECTIONS</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">三年財務擴張預估 (2026–2029)</h2>
+        <p class="text-gray-600 mt-3 text-base">隨著品牌會員累積與校園派對訂單擴增，預估第二年成長 20%、第三年成長 15%，三年累計淨利潤達 NT$ 380 萬。</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Chart Column -->
+        <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8">
+          <h3 class="text-lg font-black text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="trending-up" class="w-5 h-5 text-brandBlue"></i>
+            <span>營收與毛利成長曲線</span>
+          </h3>
+          <div class="h-80 w-full">
+            <canvas id="growthForecastChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Table Column -->
+        <div class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8">
+          <h3 class="text-lg font-black text-gray-900 mb-6 flex items-center gap-2">
+            <i data-lucide="layers" class="w-5 h-5 text-brandPink"></i>
+            <span>三年指標預估表</span>
+          </h3>
+
+          <div class="space-y-4 text-sm font-medium">
+            
+            <div class="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-100">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-gray-900">第一年 (啟動與穩定)</span>
+                <span class="font-black text-blue-700">NT$ 4,560,000</span>
+              </div>
+              <div class="flex justify-between text-xs text-gray-500">
+                <span>毛利: NT$ 221 萬 (48.5%)</span>
+                <span class="font-bold text-emerald-600">淨利: NT$ 95.1 萬 (20.9%)</span>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-purple-50/70 border border-purple-100">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-gray-900">第二年 (+20% 擴張期)</span>
+                <span class="font-black text-purple-700">NT$ 5,472,000</span>
+              </div>
+              <div class="flex justify-between text-xs text-gray-500">
+                <span>毛利: NT$ 268 萬 (49.0%)</span>
+                <span class="font-bold text-emerald-600">淨利: NT$ 128.9 萬 (23.6%)</span>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-100">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-bold text-gray-900">第三年 (+15% 規模化)</span>
+                <span class="font-black text-emerald-700">NT$ 6,292,800</span>
+              </div>
+              <div class="flex justify-between text-xs text-gray-500">
+                <span>毛利: NT$ 311 萬 (49.5%)</span>
+                <span class="font-bold text-emerald-600">淨利: NT$ 155.9 萬 (24.8%)</span>
+              </div>
+            </div>
+
+            <div class="pt-2 text-center text-xs font-bold text-gray-500">
+              三年累計累積淨利潤：<strong class="text-brandPink text-sm">NT$ 3,799,816</strong>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SECTION 7: 12-MONTH IMPLEMENTATION ROADMAP ================= -->
+  <section id="roadmap" class="py-16 md:py-24 bg-white/60 border-t border-pink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brandPink font-extrabold text-sm uppercase tracking-widest block mb-2">EXECUTION TIMELINE</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">12 個月實施步驟與里程碑</h2>
+        <p class="text-gray-600 mt-3 text-base">階段明確、責任切實的執行藍圖，從選址簽約到滿週年 100% 資本全額回收。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        
+        <!-- Step 1 -->
+        <div class="glass-card rounded-3xl p-6 relative">
+          <div class="w-10 h-10 rounded-full bg-pink-500 text-white font-black flex items-center justify-center text-sm mb-4 shadow-md">1</div>
+          <span class="text-xs font-bold text-brandPink block">Month 1 (Day 1-30)</span>
+          <h4 class="text-lg font-black text-gray-900 mt-1 mb-2">選址與法定登記</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            捷運/學校商圈店面簽約、商號設立登記、食品業者登錄、室內裝修施工圖確認。
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card rounded-3xl p-6 relative">
+          <div class="w-10 h-10 rounded-full bg-blue-500 text-white font-black flex items-center justify-center text-sm mb-4 shadow-md">2</div>
+          <span class="text-xs font-bold text-brandBlue block">Month 2 (Day 31-60)</span>
+          <h4 class="text-lg font-black text-gray-900 mt-1 mb-2">裝修與設備就位</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            彩虹糖果牆安裝、展示櫃打燈、POS收銀機與掃描槍串接、首批進貨供應商合約。
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card rounded-3xl p-6 relative">
+          <div class="w-10 h-10 rounded-full bg-purple-500 text-white font-black flex items-center justify-center text-sm mb-4 shadow-md">3</div>
+          <span class="text-xs font-bold text-brandPurple block">Month 3-4 (Day 61-120)</span>
+          <h4 class="text-lg font-black text-gray-900 mt-1 mb-2">試營運與正式開幕</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            試營運庫存測試、正式開幕活動、滿額轉蛋輪盤、社群網紅探店短影音推播。
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card rounded-3xl p-6 relative">
+          <div class="w-10 h-10 rounded-full bg-amber-500 text-white font-black flex items-center justify-center text-sm mb-4 shadow-md">4</div>
+          <span class="text-xs font-bold text-brandYellow block">Month 6 (Day 180)</span>
+          <h4 class="text-lg font-black text-gray-900 mt-1 mb-2">損益穩定與客製拓展</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            達成每日穩定 50+ 來客數、推出幼兒園/小學生日分享包服務、開拓節慶大單。
+          </p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="glass-card rounded-3xl p-6 relative">
+          <div class="w-10 h-10 rounded-full bg-emerald-500 text-white font-black flex items-center justify-center text-sm mb-4 shadow-md">5</div>
+          <span class="text-xs font-bold text-emerald-600 block">Month 12 (Day 360)</span>
+          <h4 class="text-lg font-black text-gray-900 mt-1 mb-2">100% 資本全額回收</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            累積淨利達標 NT$ 100 萬，全額回收初始創業投資，評估開闢二號分店或電商。
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SECTION 8: CLOUD SYNC & DOCS INTEGRATION ================= -->
+  <section class="py-16 md:py-24 bg-gradient-to-br from-pink-500 via-rose-500 to-pink-600 text-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold text-white">
+        <i data-lucide="cloud-check" class="w-4 h-4"></i>
+        <span>雲端同步 · 即時查閱完整商業機密文件</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+        已同步建立 Google Docs 與 Sheets 原生檔案
+      </h2>
+
+      <p class="text-base sm:text-lg text-pink-100 max-w-2xl mx-auto font-medium">
+        本網站的所有財務數字、產品毛利結構與營運排程，皆已即時同步至您的 Google 雲端硬碟，可供直接在線協作與匯出。
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        
+        <!-- Google Doc Button -->
+        <a href="https://docs.google.com/document/d/13652drQSwojgFWc6NzLKUGcrDVU-M7qpPdoCTwTQ1DA/edit" target="_blank" rel="noopener noreferrer" 
+           class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white text-gray-900 font-extrabold flex items-center justify-center gap-3 shadow-xl hover:bg-gray-50 transition-transform hover:-translate-y-0.5">
+          <i data-lucide="file-text" class="w-5 h-5 text-blue-600"></i>
+          <span>開啟 Google Docs 完整企劃書</span>
+        </a>
+
+        <!-- Google Sheet Button -->
+        <a href="https://docs.google.com/spreadsheets/d/10dj69oe44KHVzqjqfm9YEBhESA_I3HHJ52TpIxMerf4/edit" target="_blank" rel="noopener noreferrer" 
+           class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-emerald-500 text-white font-extrabold flex items-center justify-center gap-3 shadow-xl hover:bg-emerald-600 transition-transform hover:-translate-y-0.5 border border-emerald-400">
+          <i data-lucide="table" class="w-5 h-5 text-white"></i>
+          <span>開啟 Google Sheets 財務模型表</span>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-gray-900 text-gray-400 py-12 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <img src="assets/images/logo.svg" alt="Sugar & Sparkle Logo" class="w-10 h-10 rounded-full">
+        <div>
+          <span class="text-white font-black text-lg tracking-tight block">SUGAR &amp; SPARKLE 糖樂萌趣</span>
+          <span class="text-xs text-gray-500">Candy &amp; Toy Boutique · Business Plan 2026</span>
+        </div>
+      </div>
+
+      <div class="text-center md:text-right text-xs space-y-1">
+        <p>© 2026 Sugar &amp; Sparkle 糖樂萌趣. All Rights Reserved.</p>
+        <p class="text-gray-500">本計畫書受智慧財產權與營業秘密保護，未經許可請勿轉載使用。</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
