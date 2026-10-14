@@ -1,0 +1,355 @@
+# Comprehensive Variety & Mascot expansion data
+import json
+
+products = [
+    # 1. 歐美彩虹自選軟糖
+    {
+        "category": "gummy",
+        "category_name": "歐美彩虹軟糖",
+        "title": "德國經典酸彩虹條軟糖",
+        "tag": "毛利 65%",
+        "sub_tag": "自選熱銷 NO.1",
+        "tag_color": "bg-emerald-500",
+        "sub_color": "bg-pink-500",
+        "price": "NT$ 120 / 100g",
+        "cost": "NT$ 42 (35%)",
+        "margin": "65.0%",
+        "share": "25.0%",
+        "desc": "德國原裝進口彩虹長條，覆蓋微酸糖霜，口感勁道，酸酸甜甜停不下來。壓克力透明重力桶陳列，是店內拍照打卡與客單毛利核心。",
+        "img": "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "gummy",
+        "category_name": "歐美彩虹軟糖",
+        "title": "巨型多汁金熊軟糖",
+        "tag": "毛利 62%",
+        "sub_tag": "孩童最愛",
+        "tag_color": "bg-emerald-500",
+        "sub_color": "bg-amber-500",
+        "price": "NT$ 110 / 100g",
+        "cost": "NT$ 42 (38%)",
+        "margin": "62.0%",
+        "share": "15.0%",
+        "desc": "特大號造型金熊軟糖，富含20%天然果汁，6種經典水果風味，Q彈不黏牙，外型可愛討喜。",
+        "img": "https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "gummy",
+        "category_name": "歐美彩虹軟糖",
+        "title": "雙層果汁爆漿夾心軟糖",
+        "tag": "毛利 60%",
+        "sub_tag": "口感驚喜",
+        "tag_color": "bg-emerald-500",
+        "sub_color": "bg-purple-500",
+        "price": "NT$ 130 / 100g",
+        "cost": "NT$ 52 (40%)",
+        "margin": "60.0%",
+        "share": "10.0%",
+        "desc": "咬開瞬間果漿四溢！草莓、白桃與芒果雙層工藝，香濃果汁在口中炸裂，高回購率網紅商品。",
+        "img": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80"
+    },
+
+    # 2. 懷舊柑仔店古早味
+    {
+        "category": "nostalgia",
+        "category_name": "懷舊古早味",
+        "title": "傳統嗶嗶糖口哨糖 (哨子硬糖)",
+        "tag": "毛利 70%",
+        "sub_tag": "童年回憶",
+        "tag_color": "bg-emerald-600",
+        "sub_color": "bg-blue-500",
+        "price": "NT$ 25 / 排",
+        "cost": "NT$ 7.5 (30%)",
+        "margin": "70.0%",
+        "share": "8.0%",
+        "desc": "吹得響的美味糖果！台灣五六年級生與千禧世代最深處的童年記憶，大人帶小孩指名度超高的經典復古零食。",
+        "img": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "nostalgia",
+        "category_name": "懷舊古早味",
+        "title": "復古跳跳糖魔法粉 (綜合水果)",
+        "tag": "毛利 68%",
+        "sub_tag": "感官刺激",
+        "tag_color": "bg-emerald-600",
+        "sub_color": "bg-pink-500",
+        "price": "NT$ 30 / 包",
+        "cost": "NT$ 9.6 (32%)",
+        "margin": "68.0%",
+        "share": "7.0%",
+        "desc": "在舌尖劈啪跳躍的二氧化碳微氣泡魔法！草莓、葡萄與可樂風味，是小朋友結帳時隨手拿取的零錢殺手。",
+        "img": "https://images.unsplash.com/photo-1581798459219-318e76aecc7b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "nostalgia",
+        "category_name": "懷舊古早味",
+        "title": "經典大豬公蜜汁魚片 & 仙楂餅",
+        "tag": "毛利 65%",
+        "sub_tag": "鹹甜鹹甜",
+        "tag_color": "bg-emerald-600",
+        "sub_color": "bg-amber-600",
+        "price": "NT$ 50 / 罐",
+        "cost": "NT$ 17.5 (35%)",
+        "margin": "65.0%",
+        "share": "6.0%",
+        "desc": "古早味柑仔店的紅色大甕裝回憶，鮮甜微辣微甜的蜜汁魚片，搭配解膩仙楂餅，滿滿濃郁懷舊氛圍感。",
+        "img": "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80"
+    },
+
+    # 3. Z世代正版潮玩盲盒
+    {
+        "category": "blindbox",
+        "category_name": "潮流盲盒",
+        "title": "泡泡瑪特 (Pop Mart) 風格盒玩公仔",
+        "tag": "客單主力 38%",
+        "sub_tag": "正版授權",
+        "tag_color": "bg-purple-600",
+        "sub_color": "bg-indigo-600",
+        "price": "NT$ 320 - 380 / 盒",
+        "cost": "NT$ 198 (62%)",
+        "margin": "38.0%",
+        "share": "30.0%",
+        "desc": "店內營收與客單價核心驅動力！精選國內外一線潮玩IP，每套含12款常規+1款限量隱藏版，帶動連續開箱與社群交換。",
+        "img": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "blindbox",
+        "category_name": "潮流盲盒",
+        "title": "三麗鷗萌系星願公仔盲盒",
+        "tag": "女性族群熱賣",
+        "sub_tag": "療癒少女心",
+        "tag_color": "bg-pink-500",
+        "sub_color": "bg-purple-500",
+        "price": "NT$ 300 / 盒",
+        "cost": "NT$ 180 (60%)",
+        "margin": "40.0%",
+        "share": "15.0%",
+        "desc": "Hello Kitty、庫洛米、美樂蒂、大耳狗聯名款，精緻植絨與珠光噴漆塗裝，開盒率極高，深受女性與中學生喜愛。",
+        "img": "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "blindbox",
+        "category_name": "潮流盲盒",
+        "title": "夜光限定版藝術設計師公仔",
+        "tag": "限量珍藏",
+        "sub_tag": "高單價精品",
+        "tag_color": "bg-amber-500",
+        "sub_color": "bg-blue-600",
+        "price": "NT$ 680 - 1280 / 隻",
+        "cost": "NT$ 340 (50%)",
+        "margin": "50.0%",
+        "share": "8.0%",
+        "desc": "獨立設計師授權限量款，黑夜中自帶螢光特效，具備二手收藏溢價潛力，吸引資深公仔玩家進店挖寶。",
+        "img": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80"
+    },
+
+    # 4. 益智積木與發條玩具
+    {
+        "category": "stem",
+        "category_name": "益智模型玩具",
+        "title": "復古發條發聲鐵皮機器人",
+        "tag": "毛利 55%",
+        "sub_tag": "復古機械",
+        "tag_color": "bg-emerald-600",
+        "sub_color": "bg-red-500",
+        "price": "NT$ 220 / 隻",
+        "cost": "NT$ 99 (45%)",
+        "margin": "55.0%",
+        "share": "8.0%",
+        "desc": "上緊發條便會搖擺走動的經典鐵皮玩具！金屬質感與齒輪嗒嗒聲，既是孩子探索機械原理的啟蒙，也是文青書桌的個性擺件。",
+        "img": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "stem",
+        "category_name": "益智模型玩具",
+        "title": "微型街景手作拼裝積木",
+        "tag": "毛利 52%",
+        "sub_tag": "專注力培養",
+        "tag_color": "bg-emerald-600",
+        "sub_color": "bg-indigo-500",
+        "price": "NT$ 180 - 290 / 盒",
+        "cost": "NT$ 86 (48%)",
+        "margin": "52.0%",
+        "share": "10.0%",
+        "desc": "糖果屋、玩具店、甜甜圈店等微型街景積木，精細度高，拼裝完成後可連綴成完整夢幻小鎮，收集成癮度極高。",
+        "img": "https://images.unsplash.com/photo-1591991731833-b4807cf7ef94?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "stem",
+        "category_name": "益智模型玩具",
+        "title": "3D 立體木質機械過山車球組",
+        "tag": "毛利 50%",
+        "sub_tag": "STEM 首選",
+        "tag_color": "bg-emerald-500",
+        "sub_color": "bg-amber-600",
+        "price": "NT$ 390 - 580 / 組",
+        "cost": "NT$ 195 (50%)",
+        "margin": "50.0%",
+        "share": "7.0%",
+        "desc": "雷射精密卡榫，純物理重力與齒輪手搖驅動鋼珠穿梭軌道。組裝過程極具成就感，家長認可度第一名的益智玩具。",
+        "img": "https://images.unsplash.com/photo-1584905066893-7d5c142ba4e1?auto=format&fit=crop&w=800&q=80"
+    },
+
+    # 5. 手工比利時生巧與精緻點心
+    {
+        "category": "chocolate",
+        "category_name": "精品可可點心",
+        "title": "比利時 72% 低糖手作生巧克力磚",
+        "tag": "毛利 50%",
+        "sub_tag": "送禮首選",
+        "tag_color": "bg-emerald-500",
+        "sub_color": "bg-blue-600",
+        "price": "NT$ 180 - 260 / 片",
+        "cost": "NT$ 90 (50%)",
+        "margin": "50.0%",
+        "share": "10.0%",
+        "desc": "嚴選比利時調溫可可豆，點綴低溫烘焙榛果與凍乾蔓越莓。微苦甘醇、入口即化，深受重視品質的粉領族與情侶喜愛。",
+        "img": "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "chocolate",
+        "category_name": "精品可可點心",
+        "title": "凍乾整粒草莓白巧克力球",
+        "tag": "毛利 52%",
+        "sub_tag": "酸甜香濃",
+        "tag_color": "bg-emerald-600",
+        "sub_color": "bg-pink-500",
+        "price": "NT$ 120 / 袋",
+        "cost": "NT$ 57 (48%)",
+        "margin": "52.0%",
+        "share": "8.0%",
+        "desc": "整顆天然草莓低溫急速凍乾，外層裹上絲滑濃郁的北海道風味白巧克力，剖面紅白分明，視覺與味覺雙重享受。",
+        "img": "https://images.unsplash.com/photo-1548848221-0c2e497ed557?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "chocolate",
+        "category_name": "精品可可點心",
+        "title": "京都宇治抹茶薄片千層脆餅",
+        "tag": "毛利 45%",
+        "sub_tag": "日系名產",
+        "tag_color": "bg-blue-500",
+        "sub_color": "bg-emerald-600",
+        "price": "NT$ 160 / 盒",
+        "cost": "NT$ 88 (55%)",
+        "margin": "45.0%",
+        "share": "7.0%",
+        "desc": "日本空運進口，微苦甘甜的宇治抹茶奶油夾在輕薄酥脆的千層威化餅乾間，免出國即可享受道地日式下午茶。",
+        "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+    },
+
+    # 6. 日韓手作DIY食玩
+    {
+        "category": "diy",
+        "category_name": "手作食玩DIY",
+        "title": "日本 Kracie 手作壽司漢堡食玩套裝",
+        "tag": "毛利 45%",
+        "sub_tag": "動手做甜點",
+        "tag_color": "bg-blue-500",
+        "sub_color": "bg-amber-500",
+        "price": "NT$ 130 - 180 / 盒",
+        "cost": "NT$ 78 (55%)",
+        "margin": "45.0%",
+        "share": "8.0%",
+        "desc": "加水就能做出逼真微型壽司、拉麵與漢堡！日本原廠無防腐劑配方，既是可食用的美味糖果，也是孩子最愛的親子手作遊戲。",
+        "img": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "diy",
+        "category_name": "手作食玩DIY",
+        "title": "韓國芝士風味年糕拉絲軟糖",
+        "tag": "毛利 48%",
+        "sub_tag": "吃播話題王",
+        "tag_color": "bg-blue-600",
+        "sub_color": "bg-rose-500",
+        "price": "NT$ 95 / 袋",
+        "cost": "NT$ 49 (52%)",
+        "margin": "48.0%",
+        "share": "6.0%",
+        "desc": "TikTok與小紅書爆紅吃播零食！可以無限拉長、造型神似辣炒年糕的Q彈軟糖，趣味感滿分。",
+        "img": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80"
+    },
+
+    # 7. 校園慶生包與客製派對禮盒
+    {
+        "category": "party",
+        "category_name": "校園派對客製",
+        "title": "幼兒園慶生客製分享袋 (10包起訂)",
+        "tag": "毛利 60%",
+        "sub_tag": "團體大單",
+        "tag_color": "bg-emerald-600",
+        "sub_color": "bg-pink-500",
+        "price": "NT$ 65 - 95 / 包",
+        "cost": "NT$ 26 (40%)",
+        "margin": "60.0%",
+        "share": "10.0%",
+        "desc": "免去家長備禮煩惱！內含無反式脂肪軟糖、造型餅乾與益智微型擦子，免費客製印製壽星姓名與祝福小卡，單次採購多為20-35包。",
+        "img": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "party",
+        "category_name": "校園派對客製",
+        "title": "奢華燙金萬聖/聖誕節倒數禮盒",
+        "tag": "毛利 65%",
+        "sub_tag": "節慶必搶",
+        "tag_color": "bg-emerald-600",
+        "sub_color": "bg-purple-600",
+        "price": "NT$ 450 - 680 / 盒",
+        "cost": "NT$ 157 (35%)",
+        "margin": "65.0%",
+        "share": "8.0%",
+        "desc": "馬卡龍色燙金硬盒加厚緞帶，含1隻限定盲盒公仔 + 2罐裝進口精緻糖果 + 紀念周邊，萬聖節、聖誕節企業福委會大宗訂單主力。",
+        "img": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80"
+    },
+
+    # 8. 扭蛋機與特色特調周邊
+    {
+        "category": "refreshment",
+        "category_name": "扭蛋機與飲品",
+        "title": "日本正版雙層轉蛋扭蛋機 (50+款)",
+        "tag": "毛利 42%",
+        "sub_tag": "被動金流",
+        "tag_color": "bg-emerald-500",
+        "sub_color": "bg-amber-500",
+        "price": "NT$ 60 - 150 / 抽",
+        "cost": "NT$ 35 (58%)",
+        "margin": "42.0%",
+        "share": "7.0%",
+        "desc": "門口騎樓8台日系正版機台，引進人氣動漫與搞笑微縮食玩。全自動投幣/LinePay掃碼出蛋，無人看管即能自主創造現金流。",
+        "img": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "refreshment",
+        "category_name": "扭蛋機與飲品",
+        "title": "萌糖特調彩虹漸層氣泡飲",
+        "tag": "毛利 75%",
+        "sub_tag": "店內高毛利",
+        "tag_color": "bg-emerald-700",
+        "sub_color": "bg-pink-500",
+        "price": "NT$ 80 / 杯",
+        "cost": "NT$ 20 (25%)",
+        "margin": "75.0%",
+        "share": "6.0%",
+        "desc": "透明易開罐包裝，藍柑橘、草莓與白桃漸層氣泡水，底部放入Q彈爆爆珠軟糖，人手一杯的邊走邊喝拍照利器！",
+        "img": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "category": "refreshment",
+        "category_name": "扭蛋機與飲品",
+        "title": "現烤焦糖彩虹爆米花桶 (桶裝附背帶)",
+        "tag": "毛利 78%",
+        "sub_tag": "香氣行銷",
+        "tag_color": "bg-emerald-700",
+        "sub_color": "bg-yellow-500",
+        "price": "NT$ 120 / 桶",
+        "cost": "NT$ 26 (22%)",
+        "margin": "78.0%",
+        "share": "6.0%",
+        "desc": "濃郁焦糖香氣飄散店門口，彩虹球形爆米花香脆不甜膩，附贈萌糖熊造型背帶桶，可重複回填折抵20元。",
+        "img": "https://images.unsplash.com/photo-1578849278619-e73505e9610f?auto=format&fit=crop&w=800&q=80"
+    }
+]
+
+with open(r"C:\Users\User\.gemini\antigravity\scratch\sugar-sparkle-website\products_data.json", "w", encoding="utf-8") as f:
+    json.dump(products, f, ensure_ascii=False, indent=2)
+
+print("Saved 21 rich product categories!")
