@@ -321,34 +321,73 @@ function initGallery() {
 
 
 
-// 5. Video Player & Switcher Logic
+// 5. Video Player & Multi-Category Playlist Logic
 function initVideo() {
   const input = document.getElementById('videoUrlInput');
   const btn = document.getElementById('updateVideoBtn');
   const iframe = document.getElementById('mainPromoVideo');
+  const currentTitle = document.getElementById('currentVideoTitle');
+  const currentTag = document.getElementById('currentVideoTag');
+  const playlistItems = document.querySelectorAll('.playlist-item-card');
 
-  function updateVideo() {
+  function playVideo(videoId, title, tag, autoplay = true) {
+    if (!iframe) return;
+    const autoParam = autoplay ? '1' : '0';
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=${autoParam}&rel=0&modestbranding=1`;
+    if (currentTitle && title) currentTitle.innerText = title;
+    if (currentTag && tag) currentTag.innerText = tag;
+
+    // Update active playlist item styling
+    playlistItems.forEach(item => {
+      const itemVid = item.getAttribute('data-video-id');
+      const playBtn = item.querySelector('.play-status-btn');
+      if (itemVid === videoId) {
+        item.classList.add('ring-2', 'ring-brandPink', 'bg-pink-50/80');
+        item.classList.remove('bg-white');
+        if (playBtn) playBtn.innerHTML = '<span class="text-brandPink font-black flex items-center gap-1">▶ 播放中</span>';
+      } else {
+        item.classList.remove('ring-2', 'ring-brandPink', 'bg-pink-50/80');
+        item.classList.add('bg-white');
+        if (playBtn) playBtn.innerHTML = '<span class="text-gray-400 group-hover:text-brandPink transition-colors flex items-center gap-1">點擊播放</span>';
+      }
+    });
+  }
+
+  playlistItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const vid = item.getAttribute('data-video-id');
+      const title = item.getAttribute('data-title');
+      const tag = item.getAttribute('data-tag');
+      playVideo(vid, title, tag, true);
+      
+      // Smooth scroll to theater on mobile
+      if (window.innerWidth < 768) {
+        const theater = document.getElementById('mainVideoTheater');
+        if (theater) theater.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
+
+  function updateCustomVideo() {
     if (!input || !iframe) return;
     const url = input.value.trim();
     if (!url) return;
 
     // Parse YouTube ID
-    let videoId = '';
     const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
     if (match && match[1]) {
-      videoId = match[1];
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      const videoId = match[1];
+      playVideo(videoId, '自訂外部播放影片', '自訂影音', true);
       input.value = '';
-      alert('已成功替換宣傳短片！');
     } else {
       alert('請輸入有效的 YouTube 影片網址（例如：https://www.youtube.com/watch?v=...）');
     }
   }
 
-  if (btn) btn.addEventListener('click', updateVideo);
+  if (btn) btn.addEventListener('click', updateCustomVideo);
   if (input) {
     input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') updateVideo();
+      if (e.key === 'Enter') updateCustomVideo();
     });
   }
 }
