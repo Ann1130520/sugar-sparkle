@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9F5"/>
+      <stop offset="100%" stop-color="#FFF0F5"/>
+    </linearGradient>
+
+    <!-- Ring Gradient -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7597"/>
+      <stop offset="50%" stop-color="#FFD166"/>
+      <stop offset="100%" stop-color="#4D96FF"/>
+    </linearGradient>
+
+    <!-- Lollipop Swirl Gradients -->
+    <linearGradient id="popPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8DA9"/>
+      <stop offset="100%" stop-color="#FF5376"/>
+    </linearGradient>
+    <linearGradient id="popBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6EC1E4"/>
+      <stop offset="100%" stop-color="#3A86FF"/>
+    </linearGradient>
+    <linearGradient id="popYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE066"/>
+      <stop offset="100%" stop-color="#FFB703"/>
+    </linearGradient>
+    <linearGradient id="popMint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#80ED99"/>
+      <stop offset="100%" stop-color="#38B000"/>
+    </linearGradient>
+    
+    <!-- Bear Gradient -->
+    <linearGradient id="bearGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFDCB8"/>
+      <stop offset="100%" stop-color="#F4A261"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#E58C8A" flood-opacity="0.18"/>
+    </filter>
+    <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#FF8DA9" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Outer Badge -->
+  <circle cx="400" cy="400" r="370" fill="url(#bgGrad)"/>
+  <circle cx="400" cy="400" r="345" fill="none" stroke="url(#ringGrad)" stroke-width="6" stroke-dasharray="14 10" opacity="0.85"/>
+  <circle cx="400" cy="400" r="325" fill="#FFFFFF" filter="url(#softShadow)"/>
+
+  <!-- Sparkles & Stars -->
+  <g fill="#FFB703">
+    <!-- Star 1 Top Right -->
+    <path d="M 570 200 Q 570 230 600 230 Q 570 230 570 260 Q 570 230 540 230 Q 570 230 570 200 Z" />
+    <!-- Star 2 Top Left -->
+    <path d="M 230 220 Q 230 245 255 245 Q 230 245 230 270 Q 230 245 205 245 Q 230 245 230 220 Z" />
+    <!-- Star 3 Right Middle -->
+    <path d="M 620 370 Q 620 390 640 390 Q 620 390 620 410 Q 620 390 600 390 Q 620 390 620 370 Z" fill="#FF7597"/>
+    <!-- Star 4 Left Middle -->
+    <path d="M 175 360 Q 175 380 195 380 Q 175 380 175 400 Q 175 380 155 380 Q 175 380 175 360 Z" fill="#3A86FF"/>
+    <!-- Small dots -->
+    <circle cx="210" cy="180" r="6" fill="#80ED99"/>
+    <circle cx="590" cy="160" r="5" fill="#FF8DA9"/>
+    <circle cx="630" cy="300" r="7" fill="#FFE066"/>
+    <circle cx="160" cy="310" r="6" fill="#FFB703"/>
+  </g>
+
+  <!-- Big Swirl Lollipop (Candy Motif) -->
+  <g id="lollipopGroup" filter="url(#softShadow)">
+    <!-- Lollipop Stick -->
+    <path d="M 440 330 L 530 460" stroke="#E2E8F0" stroke-width="20" stroke-linecap="round"/>
+    <path d="M 442 332 L 528 458" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- Lollipop Main Head -->
+    <circle cx="430" cy="270" r="105" fill="url(#popPink)"/>
+    
+    <!-- Pinwheel / Swirl Candy Segments -->
+    <!-- Segment 1 (Blue) -->
+    <path d="M 430 270 L 430 165 A 105 105 0 0 1 504 195 Z" fill="url(#popBlue)"/>
+    <!-- Segment 2 (Yellow) -->
+    <path d="M 430 270 L 535 270 A 105 105 0 0 1 504 344 Z" fill="url(#popYellow)"/>
+    <!-- Segment 3 (Mint) -->
+    <path d="M 430 270 L 430 375 A 105 105 0 0 1 356 344 Z" fill="url(#popMint)"/>
+    <!-- Segment 4 (White/Pink stripe) -->
+    <path d="M 430 270 L 325 270 A 105 105 0 0 1 356 195 Z" fill="#FFF0F5"/>
+
+    <!-- Center Candy Swirl Core -->
+    <circle cx="430" cy="270" r="32" fill="#FFFFFF"/>
+    <circle cx="430" cy="270" r="22" fill="#FF5376"/>
+    <circle cx="430" cy="270" r="12" fill="#FFFFFF"/>
+    <!-- Glossy reflection shine on candy -->
+    <path d="M 370 200 A 80 80 0 0 1 480 200" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.65"/>
+  </g>
+
+  <!-- Cute Toy Bear Character Peeking (Toy Motif) -->
+  <g id="toyBearGroup" filter="url(#softShadow)">
+    <!-- Left Ear -->
+    <circle cx="280" cy="260" r="32" fill="url(#bearGrad)"/>
+    <circle cx="280" cy="260" r="18" fill="#FFB4A2"/>
+
+    <!-- Right Ear -->
+    <circle cx="390" cy="260" r="32" fill="url(#bearGrad)"/>
+    <circle cx="390" cy="260" r="18" fill="#FFB4A2"/>
+
+    <!-- Bear Head -->
+    <ellipse cx="335" cy="330" rx="80" ry="72" fill="url(#bearGrad)"/>
+    
+    <!-- Cute Cap / Party Crown on Bear -->
+    <polygon points="335,215 315,260 355,260" fill="#FF5376"/>
+    <circle cx="335" cy="215" r="8" fill="#FFE066"/>
+
+    <!-- Bear Snout -->
+    <ellipse cx="335" cy="345" rx="34" ry="26" fill="#FFF9F5"/>
+    <ellipse cx="335" cy="332" rx="12" ry="8" fill="#3D3A45"/>
+    <!-- Cute Smile -->
+    <path d="M 326 342 Q 335 352 344 342" stroke="#3D3A45" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Happy Eyes -->
+    <ellipse cx="305" cy="315" rx="8" ry="10" fill="#3D3A45"/>
+    <circle cx="303" cy="312" r="3.5" fill="#FFFFFF"/>
+    <ellipse cx="365" cy="315" rx="8" ry="10" fill="#3D3A45"/>
+    <circle cx="363" cy="312" r="3.5" fill="#FFFFFF"/>
+
+    <!-- Pink Blush Cheeks -->
+    <ellipse cx="285" cy="335" rx="13" ry="8" fill="#FF8DA9" opacity="0.65"/>
+    <ellipse cx="385" cy="335" rx="13" ry="8" fill="#FF8DA9" opacity="0.65"/>
+
+    <!-- Bear Hugging Paws -->
+    <!-- Left Paw -->
+    <circle cx="265" cy="385" r="22" fill="url(#bearGrad)"/>
+    <circle cx="265" cy="385" r="14" fill="#FFB4A2"/>
+    <!-- Right Paw hugging candy -->
+    <circle cx="405" cy="385" r="22" fill="url(#bearGrad)"/>
+    <circle cx="405" cy="385" r="14" fill="#FFB4A2"/>
+
+    <!-- Wind-Up Key on Bear (Toy accent) -->
+    <g transform="translate(230, 310) rotate(-25)">
+      <circle cx="0" cy="0" r="16" fill="none" stroke="#FFD166" stroke-width="7"/>
+      <rect x="0" y="-4" width="22" height="8" rx="3" fill="#FFD166"/>
+    </g>
+  </g>
+
+  <!-- Wrapping Candy Bow / Ribbon Accent -->
+  <g transform="translate(400, 440)">
+    <!-- Ribbon Loop Left -->
+    <path d="M 0 0 C -45 -35 -75 10 -15 25 Z" fill="#FF5376"/>
+    <path d="M 0 0 C -35 -25 -55 5 -10 15 Z" fill="#FF8DA9"/>
+    <!-- Ribbon Loop Right -->
+    <path d="M 0 0 C 45 -35 75 10 15 25 Z" fill="#FF5376"/>
+    <path d="M 0 0 C 35 -25 55 5 10 15 Z" fill="#FF8DA9"/>
+    <!-- Ribbon Knot -->
+    <circle cx="0" cy="8" r="14" fill="#FFB703"/>
+    <circle cx="0" cy="8" r="8" fill="#FFE066"/>
+  </g>
+
+  <!-- Typography Banner Area -->
+  <!-- Curving or Pill Base for Main Title -->
+  <rect x="150" y="495" width="500" height="90" rx="45" fill="#FF5376" filter="url(#badgeShadow)"/>
+  <rect x="155" y="500" width="490" height="80" rx="40" fill="#FFFFFF"/>
+
+  <!-- Main Brand Name: Sugar & Sparkle -->
+  <text x="400" y="555" 
+        font-family="'Nunito', 'Comfortaa', 'Fredoka One', 'Segoe UI', 'Arial Rounded MT Bold', sans-serif" 
+        font-size="44" 
+        font-weight="900" 
+        fill="#FF3366" 
+        text-anchor="middle" 
+        letter-spacing="1">
+    SUGAR &amp; SPARKLE
+  </text>
+
+  <!-- Secondary Ribbon / Subtitle: Candy & Toy Shop -->
+  <g filter="url(#softShadow)">
+    <rect x="230" y="605" width="340" height="44" rx="22" fill="#3A86FF"/>
+    <text x="400" y="635" 
+          font-family="'Quicksand', 'Montserrat', 'Segoe UI', sans-serif" 
+          font-size="19" 
+          font-weight="800" 
+          fill="#FFFFFF" 
+          text-anchor="middle" 
+          letter-spacing="4">
+      CANDY &amp; TOY BOUTIQUE
+    </text>
+  </g>
+
+  <!-- Chinese Subtitle / Tagline below -->
+  <text x="400" y="685" 
+        font-family="'Microsoft JhengHei', 'PingFang TC', sans-serif" 
+        font-size="19" 
+        font-weight="700" 
+        fill="#FFB703" 
+        text-anchor="middle" 
+        letter-spacing="6">
+    ★ 糖 樂 萌 趣 ★
+  </text>
+</svg>

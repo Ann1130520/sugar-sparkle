@@ -1,0 +1,6 @@
+*.pyc
+__pycache__/
+bgm_test.wav
+find_videos.py
+found_videos.json
+test_embeds.py

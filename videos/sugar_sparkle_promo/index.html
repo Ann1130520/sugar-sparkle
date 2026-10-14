@@ -8,78 +8,107 @@
   --line: rgba(255, 83, 118, 0.35); --glow-rgb: 255, 83, 118;
 }
 
-/* 品牌舞台定位 (1920x1080) */
+/* 主持吉祥物舞台定位 (1920x1080) */
 #host {
-  left: 1240px; top: 220px; width: 500px; height: 500px; z-index: 15;
+  left: 1240px; top: 170px; width: 560px; height: 560px; z-index: 15;
+  position: absolute;
 }
-#host img {
+.host-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
   border-radius: 44px;
   border: 6px solid #FF5376;
   box-shadow: 0 25px 60px rgba(255, 83, 118, 0.45), 0 0 40px rgba(255, 183, 3, 0.3);
   object-fit: cover;
   background: #FFF;
 }
-
-/* S1: 品牌主標 */
-#s1_title { left: 90px; top: 220px; width: 1150px; opacity: 0; }
-#s1_title .logo-img { width: 130px; height: 130px; border-radius: 50%; box-shadow: 0 10px 30px rgba(255,83,118,0.4); margin-bottom: 24px; border: 4px solid #FFF; background:#fff; }
-#s1_title .h1 { font-family: "Noto Serif TC", serif; font-size: 74px; font-weight: 900; line-height: 1.15; white-space: nowrap; }
-#s1_title .h2 { font-size: 40px; color: var(--champ); margin-top: 14px; font-weight: 700; letter-spacing: 0.08em; }
-#s1_badges { display: flex; gap: 16px; margin-top: 28px; }
-
-/* S2: 糖果牆實景展示 */
-#s2_candy { left: 90px; top: 180px; width: 1740px; opacity: 0; }
-#s2_card {
-  display: flex; gap: 40px; align-items: center; padding: 36px; border-radius: 36px;
-  background: rgba(43, 17, 35, 0.7); backdrop-filter: blur(20px); border: 2px solid var(--line);
-  box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+.host-badge {
+  position: absolute; bottom: -72px; left: 50%; transform: translateX(-50%);
+  white-space: nowrap; padding: 12px 28px; border-radius: 999px;
+  background: rgba(43, 17, 35, 0.9); backdrop-filter: blur(14px);
+  border: 2px solid var(--gold); font-size: 21px; font-weight: 800; color: #FFF;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5); pointer-events: none;
 }
-#s2_img_wrap { width: 780px; height: 500px; border-radius: 28px; overflow: hidden; border: 4px solid rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.4); shrink: 0; position: relative; }
-#s2_img_wrap img { width: 100%; height: 100%; object-fit: cover; }
-#s2_info { flex: 1; padding-right: 20px; }
-#s2_info .tag { display: inline-block; padding: 8px 20px; border-radius: 999px; background: var(--gold); color: #fff; font-weight: 800; font-size: 22px; margin-bottom: 20px; }
-#s2_info h3 { font-family: "Noto Serif TC", serif; font-size: 54px; font-weight: 900; color: #FFF; margin-bottom: 18px; line-height: 1.2; }
-#s2_info p { font-size: 25px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
-.pill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.pill-item { background: rgba(255,255,255,0.08); border: 1px solid var(--line); border-radius: 18px; padding: 12px 18px; font-size: 21px; font-weight: 700; color: var(--cream); display: flex; items-center; gap: 10px; }
 
-/* S3: 潮玩盲盒 */
-#s3_blindbox { left: 100px; top: 200px; width: 1720px; opacity: 0; }
-#s3_title { text-align: center; margin-bottom: 40px; }
-#s3_title .tag { display: inline-block; padding: 8px 24px; border-radius: 999px; background: var(--champ); color: #2B1123; font-weight: 900; font-size: 24px; margin-bottom: 16px; }
-#s3_title h3 { font-family: "Noto Serif TC", serif; font-size: 64px; font-weight: 900; color: #FFF; }
-.box-grid { display: flex; gap: 32px; justify-content: center; }
-.box-card {
-  flex: 1; max-width: 520px; padding: 36px 30px; border-radius: 28px;
-  background: linear-gradient(160deg, rgba(255,83,118,0.15), rgba(58,134,255,0.1));
-  border: 2px solid var(--line); backdrop-filter: blur(16px); box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-  position: relative; overflow: hidden;
+/* S1: 官方品牌登場 */
+#s1_title { left: 90px; top: 200px; width: 1120px; opacity: 0; }
+#s1_title .logo-img { width: 140px; height: 140px; border-radius: 50%; box-shadow: 0 15px 35px rgba(255,83,118,0.5); margin-bottom: 24px; border: 4px solid #FFF; background:#fff; }
+#s1_title .h1 { font-family: "Noto Serif TC", serif; font-size: 76px; font-weight: 900; line-height: 1.15; white-space: nowrap; }
+#s1_title .h2 { font-size: 38px; color: var(--champ); margin-top: 16px; font-weight: 700; letter-spacing: 0.08em; }
+#s1_badges { display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
+
+/* S2: 彩虹糖果牆 + 真實瀑布實拍 */
+#s2_candy { left: 80px; top: 150px; width: 1120px; opacity: 0; }
+#s2_title { margin-bottom: 20px; }
+#s2_title .tag { display: inline-block; padding: 8px 22px; border-radius: 999px; background: var(--gold); color: #fff; font-weight: 800; font-size: 22px; margin-bottom: 12px; }
+#s2_title h3 { font-family: "Noto Serif TC", serif; font-size: 52px; font-weight: 900; color: #FFF; }
+.s2-grid { display: flex; gap: 24px; margin-bottom: 24px; }
+.s2-photo-card {
+  position: relative; border-radius: 26px; overflow: hidden;
+  border: 3px solid rgba(255, 83, 118, 0.4);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.5);
 }
-.box-card .icon { font-size: 60px; margin-bottom: 16px; }
-.box-card h4 { font-size: 38px; font-weight: 800; color: #FFF; margin-bottom: 12px; }
-.box-card p { font-size: 22px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
-.box-card .badge { display: inline-block; padding: 6px 16px; border-radius: 999px; font-size: 18px; font-weight: 800; background: rgba(255,255,255,0.15); color: var(--champ); }
+.s2-photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.s2-photo-card .photo-tag {
+  position: absolute; top: 16px; left: 16px; padding: 6px 16px; border-radius: 999px;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+  color: #FFF; font-size: 16px; font-weight: 800; border: 1px solid rgba(255,255,255,0.25);
+}
+.s2-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.s2-pill {
+  background: rgba(255,255,255,0.08); border: 1px solid var(--line); border-radius: 18px;
+  padding: 12px 20px; font-size: 20px; font-weight: 700; color: var(--cream);
+  display: flex; align-items: center; gap: 12px;
+}
 
-/* S4: 益智食玩與禮盒 */
-#s4_pillars { left: 100px; top: 200px; width: 1720px; opacity: 0; }
+/* S3: 潮玩盲盒 + 實品微距開箱 */
+#s3_blindbox { left: 80px; top: 150px; width: 1120px; opacity: 0; }
+#s3_title { margin-bottom: 20px; }
+#s3_title .tag { display: inline-block; padding: 8px 22px; border-radius: 999px; background: var(--champ); color: #2B1123; font-weight: 900; font-size: 22px; margin-bottom: 12px; }
+#s3_title h3 { font-family: "Noto Serif TC", serif; font-size: 52px; font-weight: 900; color: #FFF; }
+.s3-content { display: flex; gap: 24px; }
+.s3-hero-photo {
+  width: 480px; height: 500px; border-radius: 28px; overflow: hidden; position: relative; shrink: 0;
+  border: 3px solid rgba(255, 183, 3, 0.5); box-shadow: 0 25px 50px rgba(0,0,0,0.55);
+}
+.s3-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.s3-hero-photo .photo-tag {
+  position: absolute; top: 16px; left: 16px; padding: 8px 18px; border-radius: 999px;
+  background: rgba(43, 17, 35, 0.85); backdrop-filter: blur(10px);
+  color: var(--champ); font-size: 17px; font-weight: 800; border: 1px solid rgba(255,183,3,0.5);
+}
+.s3-cards { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.s3-box-item {
+  padding: 22px 26px; border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255,83,118,0.18), rgba(58,134,255,0.12));
+  border: 1.5px solid var(--line); backdrop-filter: blur(14px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+}
+.s3-box-item h4 { font-size: 28px; font-weight: 800; color: #FFF; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.s3-box-item p { font-size: 19px; color: var(--muted); line-height: 1.45; margin-bottom: 8px; }
+.s3-box-item .badge { display: inline-block; padding: 4px 14px; border-radius: 999px; font-size: 15px; font-weight: 800; background: rgba(255,255,255,0.12); color: var(--champ); }
+
+/* S4: 益智玩具與手作禮盒 (4大種類) */
+#s4_pillars { left: 90px; top: 170px; width: 1740px; opacity: 0; }
 #s4_title { text-align: center; margin-bottom: 40px; }
-#s4_title h3 { font-family: "Noto Serif TC", serif; font-size: 64px; font-weight: 900; color: #FFF; }
+#s4_title .tag { display: inline-block; padding: 8px 24px; border-radius: 999px; background: var(--mint); color: #11050E; font-weight: 900; font-size: 22px; margin-bottom: 14px; }
+#s4_title h3 { font-family: "Noto Serif TC", serif; font-size: 60px; font-weight: 900; color: #FFF; }
 .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .pillar-card {
-  padding: 34px 26px; border-radius: 26px; border: 2px solid var(--line);
-  background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  padding: 38px 28px; border-radius: 28px; border: 2px solid var(--line);
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); box-shadow: 0 20px 45px rgba(0,0,0,0.35);
   text-align: center;
 }
-.pillar-card .emoji { font-size: 54px; margin-bottom: 14px; }
-.pillar-card h4 { font-size: 32px; font-weight: 800; color: #FFF; margin-bottom: 10px; }
-.pillar-card p { font-size: 19px; color: var(--muted); line-height: 1.5; }
-.pillar-card .subtag { margin-top: 16px; display: inline-block; font-size: 16px; font-weight: 800; color: var(--mint); background: rgba(6,214,160,0.15); padding: 4px 14px; border-radius: 999px; }
+.pillar-card .emoji { font-size: 58px; margin-bottom: 16px; }
+.pillar-card h4 { font-size: 32px; font-weight: 800; color: #FFF; margin-bottom: 12px; }
+.pillar-card p { font-size: 20px; color: var(--muted); line-height: 1.5; }
+.pillar-card .subtag { margin-top: 18px; display: inline-block; font-size: 16px; font-weight: 800; color: var(--mint); background: rgba(6,214,160,0.18); padding: 5px 16px; border-radius: 999px; }
 
 /* S5: 收尾大合照 */
-#s5_end { left: 120px; top: 240px; width: 1050px; opacity: 0; }
-#s5_end .eyebrow { font-size: 32px; color: var(--champ); font-weight: 800; letter-spacing: 0.15em; margin-bottom: 16px; }
-#s5_end .h1 { font-family: "Noto Serif TC", serif; font-size: 80px; font-weight: 900; line-height: 1.2; color: #FFF; margin-bottom: 30px; }
-#s5_end .cta { display: inline-flex; align-items: center; gap: 16px; padding: 20px 44px; border-radius: 999px; background: linear-gradient(90deg, #FF5376, #FFB703); color: #FFF; font-size: 32px; font-weight: 900; box-shadow: 0 20px 50px rgba(255,83,118,0.5); border: 2px solid #FFF; }
+#s5_end { left: 100px; top: 220px; width: 1080px; opacity: 0; }
+#s5_end .eyebrow { font-size: 30px; color: var(--champ); font-weight: 800; letter-spacing: 0.15em; margin-bottom: 16px; }
+#s5_end .h1 { font-family: "Noto Serif TC", serif; font-size: 78px; font-weight: 900; line-height: 1.22; color: #FFF; margin-bottom: 30px; }
+#s5_end .cta { display: inline-flex; align-items: center; gap: 16px; padding: 20px 48px; border-radius: 999px; background: linear-gradient(90deg, #FF5376, #FFB703); color: #FFF; font-size: 32px; font-weight: 900; box-shadow: 0 20px 50px rgba(255,83,118,0.5); border: 2px solid #FFF; }
+#s5_end .address { margin-top: 24px; font-size: 22px; color: var(--muted); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -93,86 +122,99 @@
     <div id="s1_badges">
       <div class="chip"><i></i> 首席微笑官：萌糖熊 (Sugar Bear) 🐻</div>
       <div class="chip"><i></i> 幸運魔法使：閃閃星 (Sparkle Star) ⭐</div>
+      <div class="chip"><i></i> 旗艦實體概念店即將盛大登場 🌈</div>
     </div>
   </div>
 
-  <!-- S2: 彩虹糖果牆實景 -->
+  <!-- S2: 彩虹糖果牆 + 真實瀑布實拍 -->
   <div id="s2_candy" class="abs">
-    <div id="s2_card">
-      <div id="s2_img_wrap">
-        <img src="assets/store_interior.jpg" alt="彩虹重力糖果牆門市實景">
+    <div id="s2_title">
+      <span class="tag">🍬 門市核心打卡引擎</span>
+      <h3>彩虹重力自選糖果牆 × 歐洲進口軟糖</h3>
+    </div>
+    <div class="s2-grid">
+      <!-- 真實軟糖傾瀉特寫瀑布 -->
+      <div class="s2-photo-card" style="width: 620px; height: 350px;">
+        <img id="s2_waterfall_img" src="assets/candy_waterfall.jpg" alt="真實軟糖瀑布特寫">
+        <div class="photo-tag">📸 歐洲進口軟糖 · 高速微距實拍</div>
       </div>
-      <div id="s2_info">
-        <span class="tag">🍬 門市核心打卡引擎</span>
-        <h3>彩虹重力自選糖果牆</h3>
-        <p>歐洲進口軟糖、酸味夾心、立體造型水果軟糖。整面落地壓克力分裝桶，想吃多少隨心挑選！</p>
-        <div class="pill-grid">
-          <div class="pill-item">🍭 24 桶重力自選設備</div>
-          <div class="pill-item">📈 綜合毛利率高達 65%</div>
-          <div class="pill-item">🇩🇪 德國立體小熊軟糖</div>
-          <div class="pill-item">🇪🇸 西班牙彩虹酸酸條</div>
-        </div>
+      <!-- 門市彩虹自選牆 -->
+      <div class="s2-photo-card" style="width: 470px; height: 350px;">
+        <img id="s2_store_img" src="assets/store_interior.jpg" alt="門市彩虹糖果牆實景">
+        <div class="photo-tag">🍭 24 桶落地無重力自選設備</div>
       </div>
+    </div>
+    <div class="s2-pills">
+      <div class="s2-pill">🐻 德國原裝立體小熊軟糖</div>
+      <div class="s2-pill">🌈 西班牙彩虹晶瑩酸酸條</div>
+      <div class="s2-pill">⚖️ 100% 自由混搭、秤重計價</div>
+      <div class="s2-pill">📈 門市綜合毛利率達 65%</div>
     </div>
   </div>
 
-  <!-- S3: 潮玩盲盒 -->
+  <!-- S3: 潮玩盲盒 + 實品微距開箱 -->
   <div id="s3_blindbox" class="abs">
     <div id="s3_title">
       <span class="tag">🎁 Z 世代心跳潮流</span>
       <h3>正版熱門潮玩盲盒 × 原創設計師公仔</h3>
     </div>
-    <div class="box-grid">
-      <div class="box-card">
-        <div class="icon">🧸</div>
-        <h4>POP MART 泡泡瑪特</h4>
-        <p>最新熱門IP系列、甜品與怪獸主題，全台粉絲搶購焦點。</p>
-        <span class="badge">平均客單價 NT$ 320</span>
+    <div class="s3-content">
+      <!-- 真實微距開箱實拍 -->
+      <div class="s3-hero-photo">
+        <img id="s3_blindbox_img" src="assets/blindbox_unboxing_real.jpg" alt="盲盒實品微距開箱">
+        <div class="photo-tag">✨ 實品微距開箱 · 撕開鋁箔的極致心跳</div>
       </div>
-      <div class="box-card">
-        <div class="icon">🎀</div>
-        <h4>三麗鷗正版授權</h4>
-        <p>酷洛米、美樂蒂、大耳狗星願盒玩，大人小孩愛不釋手。</p>
-        <span class="badge">大人童心 Kidult 狂熱</span>
-      </div>
-      <div class="box-card">
-        <div class="icon">⭐</div>
-        <h4>原創設計師限量款</h4>
-        <p>每一盒都是未知驚喜！相傳向閃閃星許願即可抽中隱藏款！</p>
-        <span class="badge">🎯 隱藏版機率加倍</span>
+      <!-- 3款潮流熱點卡片 -->
+      <div class="s3-cards">
+        <div class="s3-box-item">
+          <h4>🧸 POP MART 泡泡瑪特</h4>
+          <p>甜品怪獸、最新熱門聯名 IP 系列，全台粉絲排隊搶購狂熱。</p>
+          <span class="badge">平均客單價 NT$ 320</span>
+        </div>
+        <div class="s3-box-item">
+          <h4>🎀 三麗鷗正版授權</h4>
+          <p>酷洛米、美樂蒂、大耳狗星願盒玩，大人小孩都瘋狂收集。</p>
+          <span class="badge">大人童心 Kidult 收藏熱潮</span>
+        </div>
+        <div class="s3-box-item">
+          <h4>⭐ 原創設計師限量隱藏款</h4>
+          <p>每一盒都是未知心跳！相傳向閃閃星許願即可抽中金色隱藏版！</p>
+          <span class="badge">🎯 隱藏版機率加倍</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- S4: 益智玩具與手作禮盒 -->
+  <!-- S4: 益智玩具與手作禮盒 (4大種類) -->
   <div id="s4_pillars" class="abs">
     <div id="s4_title">
-      <h3>多元化休閒零售 · 豐富客層體驗</h3>
+      <span class="tag">🌈 多元化休閒零售 · 豐富客層體驗</span>
+      <h3>四大主打品類 · 滿足全客群甜美渴望</h3>
     </div>
     <div class="pillar-grid">
       <div class="pillar-card">
         <div class="emoji">🍡</div>
         <h4>手作食玩 DIY</h4>
         <p>日韓 Kracie 便當漢堡食玩材料包，親子互動滿分。</p>
-        <span class="subtag">親子寓教於樂</span>
+        <span class="subtag">親子寓教於樂首選</span>
       </div>
       <div class="pillar-card">
         <div class="emoji">🤖</div>
         <h4>益智模型 STEM</h4>
         <p>復古發條機器人、木質 3D 機械傳動音樂盒。</p>
-        <span class="subtag">啟發探索與好奇</span>
+        <span class="subtag">啟發探索與好奇心</span>
       </div>
       <div class="pillar-card">
         <div class="emoji">🍫</div>
-        <h4>精品可可生巧</h4>
-        <p>比利時苦甜手作黑巧夾心、宇治抹茶生巧禮盒。</p>
-        <span class="subtag">精緻送禮首選</span>
+        <h4>精品手作可可</h4>
+        <p>比利時苦甜手作黑巧、宇治抹茶生巧禮盒。</p>
+        <span class="subtag">精緻送禮味蕾首選</span>
       </div>
       <div class="pillar-card">
         <div class="emoji">🎁</div>
-        <h4>生日派對禮盒</h4>
+        <h4>節慶生日禮盒</h4>
         <p>幼兒園/校園慶生分享大禮包、節慶訂製提袋。</p>
-        <span class="subtag">高客單團體訂單</span>
+        <span class="subtag">高客單團體客製訂單</span>
       </div>
     </div>
   </div>
@@ -184,10 +226,22 @@
     <div class="cta">
       <span>🍭 快來 Sugar &amp; Sparkle 找我們玩吧！</span>
     </div>
+    <div class="address">📍 台北市信義區夢幻街 88 號（旗艦展示店） · 每日 11:00 - 22:00</div>
   </div>
 
-  <!-- 主持吉祥物 (萌糖熊 & 閃閃星) -->
-  <div id="host"><img src="assets/mascot.jpg" alt="Sugar Bear"></div>
+  <!-- 主持吉祥物 (萌糖熊 & 閃閃星) - 依分鏡動態切換姿態 -->
+  <div id="host">
+    <!-- S1 & S5 默認：抱著棒棒糖與盲盒 -->
+    <img id="host_s1" class="host-img" src="assets/mascot.jpg" alt="萌糖熊 & 閃閃星">
+    <!-- S2 糖果專場：圍裙鏟糖姿態 -->
+    <img id="host_s2" class="host-img" src="assets/mascot_scoop.jpg" alt="萌糖熊鏟糖" style="opacity:0;">
+    <!-- S3 盲盒專場：開出發光隱藏版姿態 -->
+    <img id="host_s3" class="host-img" src="assets/mascot_blindbox.jpg" alt="萌糖熊開出隱藏版" style="opacity:0;">
+    <!-- S2 吉祥物台詞徽章 -->
+    <div id="host_badge_s2" class="host-badge" style="opacity:0;">🐻 萌糖熊：「想吃多少，隨心挑選！」✨</div>
+    <!-- S3 吉祥物台詞徽章 -->
+    <div id="host_badge_s3" class="host-badge" style="opacity:0; border-color:var(--champ); color:var(--champ);">⭐ 閃閃星加持：「哇！開出隱藏版了！」🎉</div>
+  </div>
 
 </div>
 
@@ -203,39 +257,63 @@ window.EPISODE = {
     const { m, S, L, LE, LM } = c;
 
     // === S1 (s01): 品牌登場與吉祥物 ===
-    // 主持吉祥物從右側浮現
-    c.hostTo({ opacity: 1, scale: 1 }, S(0).start, 1.0);
+    // 預設姿態
+    m.set("#host_s1", { opacity: 1 }, 0);
+    m.set("#host_s2", { opacity: 0 }, 0);
+    m.set("#host_s3", { opacity: 0 }, 0);
+    m.set("#host_badge_s2", { opacity: 0 }, 0);
+    m.set("#host_badge_s3", { opacity: 0 }, 0);
+
+    // 主持吉祥物浮現
+    c.hostTo({ opacity: 1, x: 0, y: 0, scale: 1 }, S(0).start, 1.0);
     // 左側標題浮現
     c.rise("#s1_title", S(0).start + 0.3, 1.2);
     // 吉祥物向左微微傾斜揮手
-    m.to("#host", { x: -60, duration: 1.5, ease: "power1.inOut" }, L(0, 1));
+    m.to("#host", { x: -40, duration: 1.5, ease: "power1.inOut" }, L(0, 1));
 
-    // === S2 (s02): 糖果牆實景 ===
+    // === S2 (s02): 彩虹糖果牆 + 真實軟糖瀑布 ===
     c.out("#s1_title", S(1).start - 0.4);
-    // 吉祥物移至右上角可愛浮動小頭像
-    c.hostTo({ x: 230, y: -210, scale: 0.44 }, S(1).start - 0.2, 1.0);
-    // 糖果牆大卡片浮現
+    // 吉祥物切換為「圍裙鏟糖」姿態並顯示語音徽章
+    m.to("#host_s1", { opacity: 0, duration: 0.4 }, S(1).start - 0.2);
+    m.to("#host_s2", { opacity: 1, duration: 0.4 }, S(1).start - 0.2);
+    m.to("#host_badge_s2", { opacity: 1, duration: 0.4 }, S(1).start + 0.2);
+    c.hostTo({ opacity: 1, x: 0, y: -20, scale: 1.02 }, S(1).start, 0.8);
+
+    // 糖果專場浮現
     c.rise("#s2_candy", S(1).start + 0.1, 1.2);
-    // 實景圖輕微推進 Ken Burns
-    m.fromTo("#s2_img_wrap img", { scale: 1 }, { scale: 1.08, duration: S(1).dur, ease: "none" }, S(1).start);
+    // 軟糖瀑布微距鏡頭緩慢推進 Ken Burns
+    m.fromTo("#s2_waterfall_img", { scale: 1 }, { scale: 1.08, duration: S(1).dur, ease: "none" }, S(1).start);
+    m.fromTo("#s2_store_img", { scale: 1.06 }, { scale: 1, duration: S(1).dur, ease: "none" }, S(1).start);
 
-    // === S3 (s03): 潮玩盲盒 ===
+    // === S3 (s03): 潮玩盲盒 + 實品微距開箱 ===
     c.out("#s2_candy", S(2).start - 0.4);
-    c.hostTo({ x: 230, y: -210, scale: 0.44 }, S(2).start - 0.2, 1.0);
-    c.rise("#s3_blindbox", S(2).start + 0.1, 1.0);
-    c.rise(".box-card", S(2).start + 0.3, 1.0, 60);
+    m.to("#host_badge_s2", { opacity: 0, duration: 0.3 }, S(2).start - 0.4);
+    // 吉祥物切換為「開出發光隱藏版」姿態並顯示語音徽章
+    m.to("#host_s2", { opacity: 0, duration: 0.4 }, S(2).start - 0.2);
+    m.to("#host_s3", { opacity: 1, duration: 0.4 }, S(2).start - 0.2);
+    m.to("#host_badge_s3", { opacity: 1, duration: 0.4 }, S(2).start + 0.2);
+    c.hostTo({ opacity: 1, x: 0, y: -20, scale: 1.02 }, S(2).start, 0.8);
 
-    // === S4 (s04): 益智玩具與手作 ===
+    // 盲盒專場浮現
+    c.rise("#s3_blindbox", S(2).start + 0.1, 1.0);
+    c.rise(".s3-box-item", S(2).start + 0.3, 0.9, 40);
+    // 開箱實照 Ken Burns 緩慢推進
+    m.fromTo("#s3_blindbox_img", { scale: 1 }, { scale: 1.08, duration: S(2).dur, ease: "none" }, S(2).start);
+
+    // === S4 (s04): 益智玩具與手作 (四大主打品類) ===
     c.out("#s3_blindbox", S(3).start - 0.4);
-    // S4 讓4張卡片全螢幕展示，吉祥物優雅淡出
+    m.to("#host_badge_s3", { opacity: 0, duration: 0.3 }, S(3).start - 0.4);
+    // S4 讓4張卡片全螢幕寬闊展示，吉祥物淡出
     c.hostTo({ opacity: 0 }, S(3).start - 0.2, 0.6);
     c.rise("#s4_pillars", S(3).start + 0.1, 1.0);
     c.rise(".pillar-card", S(3).start + 0.3, 0.9, 50);
 
     // === S5 (s05): 收尾與熱情邀請 ===
     c.out("#s4_pillars", S(4).start - 0.4);
-    // 吉祥物回到右側全貌特寫
-    c.hostTo({ opacity: 1, x: -40, y: 20, scale: 1.05 }, S(4).start, 1.2);
+    // 吉祥物切回初始經典姿態迎接大家
+    m.to("#host_s3", { opacity: 0, duration: 0.4 }, S(4).start - 0.2);
+    m.to("#host_s1", { opacity: 1, duration: 0.4 }, S(4).start - 0.2);
+    c.hostTo({ opacity: 1, x: -20, y: 10, scale: 1.05 }, S(4).start, 1.2);
     c.rise("#s5_end", S(4).start + 0.3, 1.2);
     m.fromTo("#s5_end .cta", { scale: 0.95 }, { scale: 1.06, repeat: -1, yoyo: true, duration: 1.2, ease: "power1.inOut" }, S(4).start + 1.2);
   }
