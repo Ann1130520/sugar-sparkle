@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSimulator();
   initNav();
   initGallery();
+  initVideo();
 });
 
 // 1. Chart.js Visualizations
@@ -318,3 +319,36 @@ function initGallery() {
   }
 }
 
+
+
+// 5. Video Player & Switcher Logic
+function initVideo() {
+  const input = document.getElementById('videoUrlInput');
+  const btn = document.getElementById('updateVideoBtn');
+  const iframe = document.getElementById('mainPromoVideo');
+
+  function updateVideo() {
+    if (!input || !iframe) return;
+    const url = input.value.trim();
+    if (!url) return;
+
+    // Parse YouTube ID
+    let videoId = '';
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+    if (match && match[1]) {
+      videoId = match[1];
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      input.value = '';
+      alert('已成功替換宣傳短片！');
+    } else {
+      alert('請輸入有效的 YouTube 影片網址（例如：https://www.youtube.com/watch?v=...）');
+    }
+  }
+
+  if (btn) btn.addEventListener('click', updateVideo);
+  if (input) {
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') updateVideo();
+    });
+  }
+}
