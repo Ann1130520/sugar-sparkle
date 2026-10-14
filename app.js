@@ -321,46 +321,30 @@ function initGallery() {
 
 
 
-// 5. Video Player & Multi-Category Playlist Logic
+// 5. Native HTML5 Video Player & Chapter Jump Logic
 function initVideo() {
-  const input = document.getElementById('videoUrlInput');
-  const btn = document.getElementById('updateVideoBtn');
-  const iframe = document.getElementById('mainPromoVideo');
-  const currentTitle = document.getElementById('currentVideoTitle');
-  const currentTag = document.getElementById('currentVideoTag');
-  const playlistItems = document.querySelectorAll('.playlist-item-card');
+  const video = document.getElementById('mainPromoVideoPlayer');
+  const chapterBtns = document.querySelectorAll('.chapter-jump-btn');
+  const muteBtn = document.getElementById('toggleMuteBtn');
+  const replayBtn = document.getElementById('replayVideoBtn');
 
-  function playVideo(videoId, title, tag, autoplay = true) {
-    if (!iframe) return;
-    const autoParam = autoplay ? '1' : '0';
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=${autoParam}&rel=0&modestbranding=1`;
-    if (currentTitle && title) currentTitle.innerText = title;
-    if (currentTag && tag) currentTag.innerText = tag;
+  if (!video) return;
 
-    // Update active playlist item styling
-    playlistItems.forEach(item => {
-      const itemVid = item.getAttribute('data-video-id');
-      const playBtn = item.querySelector('.play-status-btn');
-      if (itemVid === videoId) {
-        item.classList.add('ring-2', 'ring-brandPink', 'bg-pink-50/80');
-        item.classList.remove('bg-white');
-        if (playBtn) playBtn.innerHTML = '<span class="text-brandPink font-black flex items-center gap-1">▶ 播放中</span>';
-      } else {
-        item.classList.remove('ring-2', 'ring-brandPink', 'bg-pink-50/80');
-        item.classList.add('bg-white');
-        if (playBtn) playBtn.innerHTML = '<span class="text-gray-400 group-hover:text-brandPink transition-colors flex items-center gap-1">點擊播放</span>';
-      }
-    });
-  }
-
-  playlistItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const vid = item.getAttribute('data-video-id');
-      const title = item.getAttribute('data-title');
-      const tag = item.getAttribute('data-tag');
-      playVideo(vid, title, tag, true);
+  // Chapter Jump buttons
+  chapterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const time = parseFloat(btn.getAttribute('data-time') || '0');
+      video.currentTime = time;
+      video.play();
       
-      // Smooth scroll to theater on mobile
+      chapterBtns.forEach(b => {
+        b.classList.remove('ring-2', 'ring-brandPink', 'bg-pink-100');
+        b.classList.add('bg-white');
+      });
+      btn.classList.add('ring-2', 'ring-brandPink', 'bg-pink-100');
+      btn.classList.remove('bg-white');
+
+      // Scroll to video if on mobile
       if (window.innerWidth < 768) {
         const theater = document.getElementById('mainVideoTheater');
         if (theater) theater.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -368,26 +352,36 @@ function initVideo() {
     });
   });
 
-  function updateCustomVideo() {
-    if (!input || !iframe) return;
-    const url = input.value.trim();
-    if (!url) return;
-
-    // Parse YouTube ID
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-    if (match && match[1]) {
-      const videoId = match[1];
-      playVideo(videoId, '自訂外部播放影片', '自訂影音', true);
-      input.value = '';
-    } else {
-      alert('請輸入有效的 YouTube 影片網址（例如：https://www.youtube.com/watch?v=...）');
-    }
-  }
-
-  if (btn) btn.addEventListener('click', updateCustomVideo);
-  if (input) {
-    input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') updateCustomVideo();
+  if (replayBtn) {
+    replayBtn.addEventListener('click', () => {
+      video.currentTime = 0;
+      video.play();
     });
   }
+
+  if (muteBtn) {
+    muteBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      muteBtn.innerHTML = video.muted 
+        ? '<i data-lucide="volume-x" class="w-3.5 h-3.5"></i> 靜音中' 
+        : '<i data-lucide="volume-2" class="w-3.5 h-3.5"></i> 已開啟聲音';
+      lucide.createIcons();
+    });
+  }
+
+  // Auto-highlight active chapter based on video current time
+  video.addEventListener('timeupdate', () => {
+    const cur = video.currentTime;
+    chapterBtns.forEach(btn => {
+      const start = parseFloat(btn.getAttribute('data-time') || '0');
+      const end = parseFloat(btn.getAttribute('data-end') || '999');
+      if (cur >= start && cur < end) {
+        btn.classList.add('ring-2', 'ring-brandPink', 'bg-pink-50');
+        btn.classList.remove('bg-white');
+      } else {
+        btn.classList.remove('ring-2', 'ring-brandPink', 'bg-pink-50');
+        btn.classList.add('bg-white');
+      }
+    });
+  });
 }

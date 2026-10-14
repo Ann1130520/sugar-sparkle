@@ -306,12 +306,12 @@
         <div class="flex items-center justify-center gap-2.5 mb-3">
           <img src="assets/images/logo.svg" alt="Sugar &amp; Sparkle Logo" class="w-9 h-9 rounded-full shadow-md bg-white p-0.5 border border-pink-200">
           <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brandPink text-white text-xs font-black shadow-md">
-            <i data-lucide="film" class="w-3.5 h-3.5"></i> 品牌影音旗艦放映廳 · VIDEO THEATER
+            <i data-lucide="film" class="w-3.5 h-3.5"></i> 品牌官方原創宣傳大片 · BRAND VIDEO
           </span>
           <img src="assets/images/mascot.jpg" alt="Mascot Sugar Bear" class="w-9 h-9 rounded-full shadow-md border-2 border-brandPink object-cover">
         </div>
-        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">沉浸式多巴胺影院 · 6 大主題專區</h2>
-        <p class="text-gray-600 mt-3 text-base">突破單一片段限制！由官方雙吉祥物「萌糖熊 🐻 &amp; 閃閃星 ⭐」為您主持導覽，全方位探索品牌美學、彩虹糖果牆、盲盒開箱、吉祥物日常與手作食玩。</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">100% 原創自製宣傳大片 · 雙吉祥物主演</h2>
+        <p class="text-gray-600 mt-3 text-base">告別外部網路限制與播放錯誤！由官方雙吉祥物「萌糖熊 🐻 &amp; 閃閃星 ⭐」親自主講，結合品牌標誌、彩虹糖果牆、潮玩盲盒與手作食玩的專屬形象影片。</p>
       </div>
 
       <!-- Mascot & Logo Co-Host Welcoming Banner -->
@@ -324,208 +324,131 @@
           <div>
             <div class="flex items-center gap-1.5">
               <img src="assets/images/logo.svg" alt="Logo" class="w-4 h-4 rounded-full">
-              <span class="font-black text-gray-900 text-sm sm:text-base">萌糖熊 &amp; 閃閃星 放映頻道</span>
+              <span class="font-black text-gray-900 text-sm sm:text-base">萌糖熊 &amp; 閃閃星 專屬原創大片</span>
             </div>
-            <span class="text-[11px] font-bold text-brandPink">Sugar &amp; Sparkle Official Studio</span>
+            <span class="text-[11px] font-bold text-brandPink">Sugar &amp; Sparkle Studio 原生出品 (47秒 Full HD)</span>
           </div>
         </div>
         <div class="flex-1 text-xs text-gray-600 bg-white/90 p-3 rounded-xl border border-pink-100 shadow-sm leading-relaxed">
-          💬 <strong>萌糖熊：「歡迎來到糖樂萌趣放映廳！🎬」</strong><br>
-          我們為您精選了 6 大主題短片！點擊下方影片卡片即可<strong>即時在上方影院切換播放</strong>，也能在右上方貼入任何 YouTube 網址自由觀看喔！
+          💬 <strong>萌糖熊：「歡迎收看我和閃閃星為大家自製的官方宣傳影片！🎬」</strong><br>
+          原生本地高畫質播放，點擊下方各章節即可<strong>秒跳轉觀看精華片段</strong>，保證流暢無廣告！
         </div>
       </div>
 
       <!-- Main Video Theater Container -->
-      <div id="mainVideoTheater" class="max-w-4xl mx-auto glass-card rounded-3xl p-4 sm:p-6 shadow-2xl border-2 border-pink-200/90 relative group mb-12">
+      <div id="mainVideoTheater" class="max-w-4xl mx-auto glass-card rounded-3xl p-4 sm:p-6 shadow-2xl border-2 border-pink-200/90 relative group mb-8">
         
-        <!-- Video Header Bar with Switcher / Customizer -->
+        <!-- Video Header Bar with Player Controls -->
         <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-4 mb-4 border-b border-gray-100 text-xs">
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="flex h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse"></span>
-            <span id="currentVideoTitle" class="font-extrabold text-gray-800 text-sm">Sugar &amp; Sparkle 官方概念形象影片 (4K HD)</span>
-            <span id="currentVideoTag" class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-pink-100 text-brandPink">品牌旗艦廣告</span>
+            <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-extrabold text-gray-800 text-sm">Sugar &amp; Sparkle 官方形象宣傳影片 (1080P Full HD 原聲)</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800">本地原生流暢播放</span>
           </div>
-          <!-- Live YouTube Input Tool -->
-          <div class="flex items-center gap-2 w-full sm:w-auto">
-            <div class="relative flex-1 sm:w-72">
-              <input type="text" id="videoUrlInput" placeholder="貼上 YouTube 影片網址更換..." 
-                     class="w-full text-xs py-1.5 pl-3 pr-8 rounded-xl border border-gray-200 focus:outline-none focus:border-brandPink bg-gray-50/80">
-              <button id="updateVideoBtn" title="點擊切換影片" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brandPink">
-                <i data-lucide="arrow-right-circle" class="w-4 h-4"></i>
-              </button>
-            </div>
+          <!-- Quick Video Player Action Buttons -->
+          <div class="flex items-center gap-2">
+            <button id="replayVideoBtn" class="px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-pink-100 text-gray-700 hover:text-brandPink font-bold text-xs transition-colors flex items-center gap-1">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> 重頭播放
+            </button>
+            <button id="toggleMuteBtn" class="px-3 py-1.5 rounded-xl bg-pink-50 hover:bg-pink-100 text-brandPink font-bold text-xs transition-colors flex items-center gap-1">
+              <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> 開啟聲音
+            </button>
+            <a href="assets/videos/sugar_sparkle_promo.mp4" download="Sugar_Sparkle_Promo_Video.mp4" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs transition-colors flex items-center gap-1">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i> 下載 MP4
+            </a>
           </div>
         </div>
 
-        <!-- 16:9 Responsive Video Player Box -->
+        <!-- 16:9 Responsive Native HTML5 Video Player Box -->
         <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-inner border border-pink-100">
-          <iframe id="mainPromoVideo" class="w-full h-full" 
-                  src="https://www.youtube.com/embed/JLl_D7Ls97g?rel=0&amp;modestbranding=1" 
-                  title="Sugar &amp; Sparkle 官方品牌概念影片" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen>
-          </iframe>
+          <video id="mainPromoVideoPlayer" class="w-full h-full object-cover" 
+                 controls autoplay loop playsinline preload="auto" poster="assets/images/store_interior.jpg">
+            <source src="assets/videos/sugar_sparkle_promo.mp4" type="video/mp4">
+            您的瀏覽器不支援 HTML5 影片標籤。
+          </video>
         </div>
 
         <!-- Player Footer Bar: Official Co-Branding Watermark -->
         <div class="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4 border-t border-gray-100 mt-4 text-xs">
           <div class="flex items-center gap-2 text-gray-500 font-bold">
             <img src="assets/images/logo.svg" alt="Logo" class="w-4 h-4 rounded-full">
-            <span>Sugar &amp; Sparkle 官方監製 · 萌糖熊 🐻 &amp; 閃閃星 ⭐ 榮譽出品</span>
+            <span>Sugar &amp; Sparkle 官方獨立製作 · 萌糖熊 🐻 &amp; 閃閃星 ⭐ 主演</span>
           </div>
           <div class="flex items-center gap-3 text-gray-400 text-[11px] font-bold">
-            <span class="flex items-center gap-1 text-emerald-600"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i>4K 高畫質串流</span>
-            <span class="flex items-center gap-1 text-purple-600"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i>多巴胺氛圍原聲</span>
+            <span class="flex items-center gap-1 text-emerald-600"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i>無版權限制 · 免外部跳轉</span>
+            <span class="flex items-center gap-1 text-purple-600"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i>正體中文台語音配音</span>
           </div>
         </div>
 
       </div>
 
 
-      <!-- ================= 6-VIDEO PLAYLIST GRID ================= -->
-      <div class="max-w-6xl mx-auto mb-14">
-        <div class="flex items-center justify-between mb-6">
-          <h3 class="text-xl font-black text-gray-900 flex items-center gap-2">
-            <i data-lucide="list-video" class="w-5 h-5 text-brandPink"></i>
-            <span>精選 6 大主題影視頻道 (點擊立即播放)</span>
+      <!-- ================= 5-CHAPTER QUICK SEEK CARDS ================= -->
+      <div class="max-w-4xl mx-auto mb-14">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-black text-gray-900 flex items-center gap-2">
+            <i data-lucide="bookmark" class="w-4 h-4 text-brandPink"></i>
+            <span>影片精彩章節導覽 (點擊立即跳轉該段)</span>
           </h3>
-          <span class="text-xs font-extrabold text-gray-400">點擊任意卡片即刻切換上方大螢幕</span>
+          <span class="text-xs text-gray-400 font-bold">點擊自動播放指定段落</span>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
           
-          <!-- Playlist Item 1: Brand Concept -->
-          <div class="playlist-item-card glass-card rounded-2xl p-4 cursor-pointer hover:shadow-lg transition-all group ring-2 ring-brandPink bg-pink-50/80 border border-pink-100"
-               data-video-id="JLl_D7Ls97g" 
-               data-title="Sugar &amp; Sparkle 官方概念形象影片 (4K HD)" 
-               data-tag="品牌旗艦廣告">
-            <div class="relative aspect-video rounded-xl overflow-hidden mb-3 bg-black">
-              <img src="https://img.youtube.com/vi/JLl_D7Ls97g/hqdefault.jpg" alt="品牌概念影片" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-2 left-2 bg-brandPink text-white text-[10px] font-black px-2 py-0.5 rounded shadow">✨ 品牌形象</span>
-              <span class="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] font-mono px-1.5 py-0.5 rounded">01:05</span>
+          <!-- Chapter 1 -->
+          <button class="chapter-jump-btn p-3.5 rounded-2xl border border-pink-100 bg-white hover:bg-pink-50 transition-all text-left shadow-sm group"
+                  data-time="0" data-end="13.1">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-black text-brandPink">00:00</span>
+              <span class="text-sm">🐻</span>
             </div>
-            <div class="flex items-center justify-between text-xs font-bold text-gray-500 mb-1">
-              <span>ONE DOT CREATIVE</span>
-              <div class="play-status-btn"><span class="text-brandPink font-black flex items-center gap-1">▶ 播放中</span></div>
-            </div>
-            <h4 class="font-black text-gray-900 text-sm group-hover:text-brandPink transition-colors line-clamp-1">
-              Commercial Video · Pastry Sweets &amp; Candy
-            </h4>
-            <p class="text-xs text-gray-500 mt-1 line-clamp-2">
-              法式甜點工坊與手工糖果的高級商業唯美攝影，營造多巴胺治癒氛圍。
-            </p>
-          </div>
+            <h4 class="font-extrabold text-gray-900 text-xs group-hover:text-brandPink">品牌與吉祥物</h4>
+            <p class="text-[11px] text-gray-400 mt-0.5 line-clamp-1">萌糖熊與閃閃星登場</p>
+          </button>
 
-          <!-- Playlist Item 2: Candy Wall -->
-          <div class="playlist-item-card glass-card rounded-2xl p-4 cursor-pointer hover:shadow-lg transition-all group bg-white border border-gray-100 hover:border-pink-200"
-               data-video-id="Kgv2sMpQg0U" 
-               data-title="彩虹重力糖果牆 × 沉浸式自選體驗巡禮" 
-               data-tag="門市實景導覽">
-            <div class="relative aspect-video rounded-xl overflow-hidden mb-3 bg-black">
-              <img src="https://img.youtube.com/vi/Kgv2sMpQg0U/hqdefault.jpg" alt="彩虹重力糖果牆巡禮" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-2 left-2 bg-emerald-500 text-white text-[10px] font-black px-2 py-0.5 rounded shadow">🍭 糖果牆實境</span>
-              <span class="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] font-mono px-1.5 py-0.5 rounded">03:20</span>
+          <!-- Chapter 2 -->
+          <button class="chapter-jump-btn p-3.5 rounded-2xl border border-pink-100 bg-white hover:bg-pink-50 transition-all text-left shadow-sm group"
+                  data-time="13.4" data-end="21.4">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-black text-emerald-600">00:13</span>
+              <span class="text-sm">🍭</span>
             </div>
-            <div class="flex items-center justify-between text-xs font-bold text-gray-500 mb-1">
-              <span>Willy Wonka Theme Tour</span>
-              <div class="play-status-btn"><span class="text-gray-400 group-hover:text-brandPink transition-colors flex items-center gap-1">點擊播放</span></div>
-            </div>
-            <h4 class="font-black text-gray-900 text-sm group-hover:text-brandPink transition-colors line-clamp-1">
-              Satisfy Your Sweet Tooth Candy Store Tour
-            </h4>
-            <p class="text-xs text-gray-500 mt-1 line-clamp-2">
-              直擊壯觀透明壓克力重力糖果牆！自選軟糖、水果硬糖與挑選趣味。
-            </p>
-          </div>
+            <h4 class="font-extrabold text-gray-900 text-xs group-hover:text-emerald-600">彩虹糖果牆實景</h4>
+            <p class="text-[11px] text-gray-400 mt-0.5 line-clamp-1">24桶歐洲軟糖自選</p>
+          </button>
 
-          <!-- Playlist Item 3: Pop Mart Blind Box -->
-          <div class="playlist-item-card glass-card rounded-2xl p-4 cursor-pointer hover:shadow-lg transition-all group bg-white border border-gray-100 hover:border-pink-200"
-               data-video-id="piirTSNSIMk" 
-               data-title="Z世代熱門 POP MART 潮玩盲盒心跳開箱實錄" 
-               data-tag="潮玩盲盒開箱">
-            <div class="relative aspect-video rounded-xl overflow-hidden mb-3 bg-black">
-              <img src="https://img.youtube.com/vi/piirTSNSIMk/hqdefault.jpg" alt="POP MART 盲盒開箱" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-2 left-2 bg-brandPurple text-white text-[10px] font-black px-2 py-0.5 rounded shadow">🧸 潮玩盲盒</span>
-              <span class="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] font-mono px-1.5 py-0.5 rounded">05:15</span>
+          <!-- Chapter 3 -->
+          <button class="chapter-jump-btn p-3.5 rounded-2xl border border-pink-100 bg-white hover:bg-pink-50 transition-all text-left shadow-sm group"
+                  data-time="21.7" data-end="29.9">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-black text-purple-600">00:21</span>
+              <span class="text-sm">🧸</span>
             </div>
-            <div class="flex items-center justify-between text-xs font-bold text-gray-500 mb-1">
-              <span>POP MART UNBOXING</span>
-              <div class="play-status-btn"><span class="text-gray-400 group-hover:text-brandPink transition-colors flex items-center gap-1">點擊播放</span></div>
-            </div>
-            <h4 class="font-black text-gray-900 text-sm group-hover:text-brandPink transition-colors line-clamp-1">
-              Pop Mart Attic Of Oddities Blind Box Case Opening
-            </h4>
-            <p class="text-xs text-gray-500 mt-1 line-clamp-2">
-              一整箱拆盒心跳實況！展示潮玩公仔細節與隱藏款開出的興奮瞬間。
-            </p>
-          </div>
+            <h4 class="font-extrabold text-gray-900 text-xs group-hover:text-purple-600">Z世代潮玩盲盒</h4>
+            <p class="text-[11px] text-gray-400 mt-0.5 line-clamp-1">泡泡瑪特心跳開箱</p>
+          </button>
 
-          <!-- Playlist Item 4: Mascot Cute Animation -->
-          <div class="playlist-item-card glass-card rounded-2xl p-4 cursor-pointer hover:shadow-lg transition-all group bg-white border border-gray-100 hover:border-pink-200"
-               data-video-id="FaexpbgY5oM" 
-               data-title="萌糖熊 Sugar Bear &amp; 閃閃星 萌趣陪伴短劇" 
-               data-tag="吉祥物日常">
-            <div class="relative aspect-video rounded-xl overflow-hidden mb-3 bg-black">
-              <img src="https://img.youtube.com/vi/FaexpbgY5oM/hqdefault.jpg" alt="吉祥物動畫短片" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-2 left-2 bg-amber-500 text-white text-[10px] font-black px-2 py-0.5 rounded shadow">🐻 吉祥物日常</span>
-              <span class="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] font-mono px-1.5 py-0.5 rounded">00:45</span>
+          <!-- Chapter 4 -->
+          <button class="chapter-jump-btn p-3.5 rounded-2xl border border-pink-100 bg-white hover:bg-pink-50 transition-all text-left shadow-sm group"
+                  data-time="30.2" data-end="37.5">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-black text-amber-600">00:30</span>
+              <span class="text-sm">🍡</span>
             </div>
-            <div class="flex items-center justify-between text-xs font-bold text-gray-500 mb-1">
-              <span>Milk &amp; Mocha Animation</span>
-              <div class="play-status-btn"><span class="text-gray-400 group-hover:text-brandPink transition-colors flex items-center gap-1">點擊播放</span></div>
-            </div>
-            <h4 class="font-black text-gray-900 text-sm group-hover:text-brandPink transition-colors line-clamp-1">
-              Come here! Cute Bear Animation Shorts
-            </h4>
-            <p class="text-xs text-gray-500 mt-1 line-clamp-2">
-              超萌小熊療癒互動！展現官方吉祥物「萌糖熊」溫暖陪伴與歡笑靈魂。
-            </p>
-          </div>
+            <h4 class="font-extrabold text-gray-900 text-xs group-hover:text-amber-600">食玩與益智玩具</h4>
+            <p class="text-[11px] text-gray-400 mt-0.5 line-clamp-1">手作DIY與派對禮盒</p>
+          </button>
 
-          <!-- Playlist Item 5: DIY Popin Cookin -->
-          <div class="playlist-item-card glass-card rounded-2xl p-4 cursor-pointer hover:shadow-lg transition-all group bg-white border border-gray-100 hover:border-pink-200"
-               data-video-id="cJrgv9Y9oPQ" 
-               data-title="日韓人氣 Kracie 便當與祭典食玩 DIY 手作教室" 
-               data-tag="手作食玩DIY">
-            <div class="relative aspect-video rounded-xl overflow-hidden mb-3 bg-black">
-              <img src="https://img.youtube.com/vi/cJrgv9Y9oPQ/hqdefault.jpg" alt="Kracie 食玩DIY" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-2 left-2 bg-rose-500 text-white text-[10px] font-black px-2 py-0.5 rounded shadow">🍡 手作食玩DIY</span>
-              <span class="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] font-mono px-1.5 py-0.5 rounded">04:30</span>
+          <!-- Chapter 5 -->
+          <button class="chapter-jump-btn p-3.5 rounded-2xl border border-pink-100 bg-white hover:bg-pink-50 transition-all text-left shadow-sm group"
+                  data-time="37.8" data-end="47.6">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-black text-rose-600">00:37</span>
+              <span class="text-sm">✨</span>
             </div>
-            <div class="flex items-center justify-between text-xs font-bold text-gray-500 mb-1">
-              <span>Japan Food Making Kit</span>
-              <div class="play-status-btn"><span class="text-gray-400 group-hover:text-brandPink transition-colors flex items-center gap-1">點擊播放</span></div>
-            </div>
-            <h4 class="font-black text-gray-900 text-sm group-hover:text-brandPink transition-colors line-clamp-1">
-              Popin Cookin Matsuri Food Making Kit DIY Candy
-            </h4>
-            <p class="text-xs text-gray-500 mt-1 line-clamp-2">
-              親子互動手作食玩！蘋果糖、炸香蕉與章魚燒軟糖製作，激發孩童想像力。
-            </p>
-          </div>
-
-          <!-- Playlist Item 6: Global Tour -->
-          <div class="playlist-item-card glass-card rounded-2xl p-4 cursor-pointer hover:shadow-lg transition-all group bg-white border border-gray-100 hover:border-pink-200"
-               data-video-id="dsHGjdPGjPE" 
-               data-title="世界頂級夢幻糖果旗艦店與視覺陳列 (VMD) 探秘" 
-               data-tag="全球標竿巡禮">
-            <div class="relative aspect-video rounded-xl overflow-hidden mb-3 bg-black">
-              <img src="https://img.youtube.com/vi/dsHGjdPGjPE/hqdefault.jpg" alt="全球著名糖果店巡禮" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-2 left-2 bg-blue-500 text-white text-[10px] font-black px-2 py-0.5 rounded shadow">🌍 全球標竿</span>
-              <span class="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] font-mono px-1.5 py-0.5 rounded">06:10</span>
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-gray-500 mb-1">
-              <span>Ultimate Candy Store Tour</span>
-              <div class="play-status-btn"><span class="text-gray-400 group-hover:text-brandPink transition-colors flex items-center gap-1">點擊播放</span></div>
-            </div>
-            <h4 class="font-black text-gray-900 text-sm group-hover:text-brandPink transition-colors line-clamp-1">
-              Top 10 Most Famous Candy Shops in the World
-            </h4>
-            <p class="text-xs text-gray-500 mt-1 line-clamp-2">
-              借鑒國際知名糖果旗艦店的視覺動線與沈浸式場景，奠定 Sugar &amp; Sparkle 品牌高度。
-            </p>
-          </div>
+            <h4 class="font-extrabold text-gray-900 text-xs group-hover:text-rose-600">甜美相遇與邀請</h4>
+            <p class="text-[11px] text-gray-400 mt-0.5 line-clamp-1">療癒陪伴熱情相見</p>
+          </button>
 
         </div>
       </div>

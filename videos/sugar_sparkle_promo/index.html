@@ -1,0 +1,245 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Sugar &amp; Sparkle 官方概念形象影片</title>
+<link rel="stylesheet" href="_runtime/runtime.css">
+<style>
+:root {
+  --bg1: #2B1123; --bg2: #1B0A16; --bg3: #11050E;
+  --cream: #FFF5F7; --gold: #FF5376; --champ: #FFB703; --rose: #FF5376; --mint: #06D6A0; --blue: #3A86FF; --muted: #D1B3C4;
+  --line: rgba(255, 83, 118, 0.35); --glow-rgb: 255, 83, 118;
+}
+
+/* 品牌舞台定位 (1920x1080) */
+#host {
+  left: 1240px; top: 220px; width: 500px; height: 500px; z-index: 15;
+}
+#host img {
+  border-radius: 44px;
+  border: 6px solid #FF5376;
+  box-shadow: 0 25px 60px rgba(255, 83, 118, 0.45), 0 0 40px rgba(255, 183, 3, 0.3);
+  object-fit: cover;
+  background: #FFF;
+}
+
+/* S1: 品牌主標 */
+#s1_title { left: 90px; top: 220px; width: 1150px; opacity: 0; }
+#s1_title .logo-img { width: 130px; height: 130px; border-radius: 50%; box-shadow: 0 10px 30px rgba(255,83,118,0.4); margin-bottom: 24px; border: 4px solid #FFF; background:#fff; }
+#s1_title .h1 { font-family: "Noto Serif TC", serif; font-size: 74px; font-weight: 900; line-height: 1.15; white-space: nowrap; }
+#s1_title .h2 { font-size: 40px; color: var(--champ); margin-top: 14px; font-weight: 700; letter-spacing: 0.08em; }
+#s1_badges { display: flex; gap: 16px; margin-top: 28px; }
+
+/* S2: 糖果牆實景展示 */
+#s2_candy { left: 90px; top: 180px; width: 1740px; opacity: 0; }
+#s2_card {
+  display: flex; gap: 40px; align-items: center; padding: 36px; border-radius: 36px;
+  background: rgba(43, 17, 35, 0.7); backdrop-filter: blur(20px); border: 2px solid var(--line);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+}
+#s2_img_wrap { width: 780px; height: 500px; border-radius: 28px; overflow: hidden; border: 4px solid rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.4); shrink: 0; position: relative; }
+#s2_img_wrap img { width: 100%; height: 100%; object-fit: cover; }
+#s2_info { flex: 1; padding-right: 20px; }
+#s2_info .tag { display: inline-block; padding: 8px 20px; border-radius: 999px; background: var(--gold); color: #fff; font-weight: 800; font-size: 22px; margin-bottom: 20px; }
+#s2_info h3 { font-family: "Noto Serif TC", serif; font-size: 54px; font-weight: 900; color: #FFF; margin-bottom: 18px; line-height: 1.2; }
+#s2_info p { font-size: 25px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+.pill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pill-item { background: rgba(255,255,255,0.08); border: 1px solid var(--line); border-radius: 18px; padding: 12px 18px; font-size: 21px; font-weight: 700; color: var(--cream); display: flex; items-center; gap: 10px; }
+
+/* S3: 潮玩盲盒 */
+#s3_blindbox { left: 100px; top: 200px; width: 1720px; opacity: 0; }
+#s3_title { text-align: center; margin-bottom: 40px; }
+#s3_title .tag { display: inline-block; padding: 8px 24px; border-radius: 999px; background: var(--champ); color: #2B1123; font-weight: 900; font-size: 24px; margin-bottom: 16px; }
+#s3_title h3 { font-family: "Noto Serif TC", serif; font-size: 64px; font-weight: 900; color: #FFF; }
+.box-grid { display: flex; gap: 32px; justify-content: center; }
+.box-card {
+  flex: 1; max-width: 520px; padding: 36px 30px; border-radius: 28px;
+  background: linear-gradient(160deg, rgba(255,83,118,0.15), rgba(58,134,255,0.1));
+  border: 2px solid var(--line); backdrop-filter: blur(16px); box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+  position: relative; overflow: hidden;
+}
+.box-card .icon { font-size: 60px; margin-bottom: 16px; }
+.box-card h4 { font-size: 38px; font-weight: 800; color: #FFF; margin-bottom: 12px; }
+.box-card p { font-size: 22px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
+.box-card .badge { display: inline-block; padding: 6px 16px; border-radius: 999px; font-size: 18px; font-weight: 800; background: rgba(255,255,255,0.15); color: var(--champ); }
+
+/* S4: 益智食玩與禮盒 */
+#s4_pillars { left: 100px; top: 200px; width: 1720px; opacity: 0; }
+#s4_title { text-align: center; margin-bottom: 40px; }
+#s4_title h3 { font-family: "Noto Serif TC", serif; font-size: 64px; font-weight: 900; color: #FFF; }
+.pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.pillar-card {
+  padding: 34px 26px; border-radius: 26px; border: 2px solid var(--line);
+  background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.pillar-card .emoji { font-size: 54px; margin-bottom: 14px; }
+.pillar-card h4 { font-size: 32px; font-weight: 800; color: #FFF; margin-bottom: 10px; }
+.pillar-card p { font-size: 19px; color: var(--muted); line-height: 1.5; }
+.pillar-card .subtag { margin-top: 16px; display: inline-block; font-size: 16px; font-weight: 800; color: var(--mint); background: rgba(6,214,160,0.15); padding: 4px 14px; border-radius: 999px; }
+
+/* S5: 收尾大合照 */
+#s5_end { left: 120px; top: 240px; width: 1050px; opacity: 0; }
+#s5_end .eyebrow { font-size: 32px; color: var(--champ); font-weight: 800; letter-spacing: 0.15em; margin-bottom: 16px; }
+#s5_end .h1 { font-family: "Noto Serif TC", serif; font-size: 80px; font-weight: 900; line-height: 1.2; color: #FFF; margin-bottom: 30px; }
+#s5_end .cta { display: inline-flex; align-items: center; gap: 16px; padding: 20px 44px; border-radius: 999px; background: linear-gradient(90deg, #FF5376, #FFB703); color: #FFF; font-size: 32px; font-weight: 900; box-shadow: 0 20px 50px rgba(255,83,118,0.5); border: 2px solid #FFF; }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- S1: 官方品牌登場 -->
+  <div id="s1_title" class="abs">
+    <img src="assets/logo.svg" alt="Sugar &amp; Sparkle Logo" class="logo-img">
+    <div class="h1"><span style="color:var(--gold)">Sugar</span> &amp; <span style="color:var(--champ)">Sparkle</span> 糖樂萌趣</div>
+    <div class="h2">沉浸式多巴胺休閒零售 · 官方形象大片</div>
+    <div id="s1_badges">
+      <div class="chip"><i></i> 首席微笑官：萌糖熊 (Sugar Bear) 🐻</div>
+      <div class="chip"><i></i> 幸運魔法使：閃閃星 (Sparkle Star) ⭐</div>
+    </div>
+  </div>
+
+  <!-- S2: 彩虹糖果牆實景 -->
+  <div id="s2_candy" class="abs">
+    <div id="s2_card">
+      <div id="s2_img_wrap">
+        <img src="assets/store_interior.jpg" alt="彩虹重力糖果牆門市實景">
+      </div>
+      <div id="s2_info">
+        <span class="tag">🍬 門市核心打卡引擎</span>
+        <h3>彩虹重力自選糖果牆</h3>
+        <p>歐洲進口軟糖、酸味夾心、立體造型水果軟糖。整面落地壓克力分裝桶，想吃多少隨心挑選！</p>
+        <div class="pill-grid">
+          <div class="pill-item">🍭 24 桶重力自選設備</div>
+          <div class="pill-item">📈 綜合毛利率高達 65%</div>
+          <div class="pill-item">🇩🇪 德國立體小熊軟糖</div>
+          <div class="pill-item">🇪🇸 西班牙彩虹酸酸條</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3: 潮玩盲盒 -->
+  <div id="s3_blindbox" class="abs">
+    <div id="s3_title">
+      <span class="tag">🎁 Z 世代心跳潮流</span>
+      <h3>正版熱門潮玩盲盒 × 原創設計師公仔</h3>
+    </div>
+    <div class="box-grid">
+      <div class="box-card">
+        <div class="icon">🧸</div>
+        <h4>POP MART 泡泡瑪特</h4>
+        <p>最新熱門IP系列、甜品與怪獸主題，全台粉絲搶購焦點。</p>
+        <span class="badge">平均客單價 NT$ 320</span>
+      </div>
+      <div class="box-card">
+        <div class="icon">🎀</div>
+        <h4>三麗鷗正版授權</h4>
+        <p>酷洛米、美樂蒂、大耳狗星願盒玩，大人小孩愛不釋手。</p>
+        <span class="badge">大人童心 Kidult 狂熱</span>
+      </div>
+      <div class="box-card">
+        <div class="icon">⭐</div>
+        <h4>原創設計師限量款</h4>
+        <p>每一盒都是未知驚喜！相傳向閃閃星許願即可抽中隱藏款！</p>
+        <span class="badge">🎯 隱藏版機率加倍</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- S4: 益智玩具與手作禮盒 -->
+  <div id="s4_pillars" class="abs">
+    <div id="s4_title">
+      <h3>多元化休閒零售 · 豐富客層體驗</h3>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="emoji">🍡</div>
+        <h4>手作食玩 DIY</h4>
+        <p>日韓 Kracie 便當漢堡食玩材料包，親子互動滿分。</p>
+        <span class="subtag">親子寓教於樂</span>
+      </div>
+      <div class="pillar-card">
+        <div class="emoji">🤖</div>
+        <h4>益智模型 STEM</h4>
+        <p>復古發條機器人、木質 3D 機械傳動音樂盒。</p>
+        <span class="subtag">啟發探索與好奇</span>
+      </div>
+      <div class="pillar-card">
+        <div class="emoji">🍫</div>
+        <h4>精品可可生巧</h4>
+        <p>比利時苦甜手作黑巧夾心、宇治抹茶生巧禮盒。</p>
+        <span class="subtag">精緻送禮首選</span>
+      </div>
+      <div class="pillar-card">
+        <div class="emoji">🎁</div>
+        <h4>生日派對禮盒</h4>
+        <p>幼兒園/校園慶生分享大禮包、節慶訂製提袋。</p>
+        <span class="subtag">高客單團體訂單</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5: 溫暖收尾 -->
+  <div id="s5_end" class="abs">
+    <div class="eyebrow">✨ 2026 沉浸式休閒零售新地標</div>
+    <div class="h1">每一口都是甜美，<br>每一盒都是<span style="color:var(--gold)">療癒與驚喜</span>！</div>
+    <div class="cta">
+      <span>🍭 快來 Sugar &amp; Sparkle 找我們玩吧！</span>
+    </div>
+  </div>
+
+  <!-- 主持吉祥物 (萌糖熊 & 閃閃星) -->
+  <div id="host"><img src="assets/mascot.jpg" alt="Sugar Bear"></div>
+
+</div>
+
+<script src="_runtime/gsap.min.js"></script>
+<script src="_tl.js"></script>
+<script src="_runtime/core.js"></script>
+<script>
+window.EPISODE = {
+  strings: {
+    zh: {}
+  },
+  build(c) {
+    const { m, S, L, LE, LM } = c;
+
+    // === S1 (s01): 品牌登場與吉祥物 ===
+    // 主持吉祥物從右側浮現
+    c.hostTo({ opacity: 1, scale: 1 }, S(0).start, 1.0);
+    // 左側標題浮現
+    c.rise("#s1_title", S(0).start + 0.3, 1.2);
+    // 吉祥物向左微微傾斜揮手
+    m.to("#host", { x: -60, duration: 1.5, ease: "power1.inOut" }, L(0, 1));
+
+    // === S2 (s02): 糖果牆實景 ===
+    c.out("#s1_title", S(1).start - 0.4);
+    // 吉祥物移至右上角可愛浮動小頭像
+    c.hostTo({ x: 230, y: -210, scale: 0.44 }, S(1).start - 0.2, 1.0);
+    // 糖果牆大卡片浮現
+    c.rise("#s2_candy", S(1).start + 0.1, 1.2);
+    // 實景圖輕微推進 Ken Burns
+    m.fromTo("#s2_img_wrap img", { scale: 1 }, { scale: 1.08, duration: S(1).dur, ease: "none" }, S(1).start);
+
+    // === S3 (s03): 潮玩盲盒 ===
+    c.out("#s2_candy", S(2).start - 0.4);
+    c.hostTo({ x: 230, y: -210, scale: 0.44 }, S(2).start - 0.2, 1.0);
+    c.rise("#s3_blindbox", S(2).start + 0.1, 1.0);
+    c.rise(".box-card", S(2).start + 0.3, 1.0, 60);
+
+    // === S4 (s04): 益智玩具與手作 ===
+    c.out("#s3_blindbox", S(3).start - 0.4);
+    // S4 讓4張卡片全螢幕展示，吉祥物優雅淡出
+    c.hostTo({ opacity: 0 }, S(3).start - 0.2, 0.6);
+    c.rise("#s4_pillars", S(3).start + 0.1, 1.0);
+    c.rise(".pillar-card", S(3).start + 0.3, 0.9, 50);
+
+    // === S5 (s05): 收尾與熱情邀請 ===
+    c.out("#s4_pillars", S(4).start - 0.4);
+    // 吉祥物回到右側全貌特寫
+    c.hostTo({ opacity: 1, x: -40, y: 20, scale: 1.05 }, S(4).start, 1.2);
+    c.rise("#s5_end", S(4).start + 0.3, 1.2);
+    m.fromTo("#s5_end .cta", { scale: 0.95 }, { scale: 1.06, repeat: -1, yoyo: true, duration: 1.2, ease: "power1.inOut" }, S(4).start + 1.2);
+  }
+};
+</script>
+<script src="_runtime/runtime.js"></script>
+</body></html>
